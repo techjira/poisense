@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
+from poisense_app import views
 
 urlpatterns = [
+    path('',views.index,name='index'),
+    path('poisense_app/',include('poisense_app.urls')),
+    path('poisense_app/help',include('poisense_app.urls')),
     path('admin/', admin.site.urls),
 ]
