@@ -61,20 +61,20 @@
                 <div class="carousel slide" data-ride="carousel" id="carousel-1">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item">
-                            <div class="jumbotron pulse animated hero-nature carousel-hero" style="background-image: url('{{ STATIC_URL }}img/Happy Family.jpg');">
+                            <div class="jumbotron pulse animated hero-nature carousel-hero" style="background-image: url('{% static "img/Happy Family.jpg" %}');">
                                 <h1 class="hero-title" style="font-family: 'Open Sans', sans-serif;">Making your home safe<br><br></h1>
                                 <p class="hero-subtitle" style="font-family: 'Open Sans', sans-serif;">Poisense helps to identify the hazardous and poisonous ingredients in the home so that you and your loved ones could be safe<br><br></p>
                                 <p><a class="btn btn-primary hero-button plat" role="button" href="#">Learn more</a></p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="jumbotron pulse animated hero-photography carousel-hero" style="background-image: url(&quot;img/Products.jpg&quot;);background-repeat: repeat;background-size: cover;background-position: 50% 50%;">
+                            <div class="jumbotron pulse animated hero-photography carousel-hero" style="background-image: url('{% static "img/Products.jpg" %}');">
                                 <h1 class="hero-title" style="font-family: 'Open Sans', sans-serif;">Why Poisense?</h1>
                                 <p class="text-center hero-subtitle" style="font-family: 'Open Sans', sans-serif;"><br>On<br>an average infants and children causes 15,500 cases each year in<br>Australia. Hence poisoning appears to be one of the top hazards in the<br>household.<br><br><br><br></p>
                             </div>
                         </div>
                         <div class="carousel-item active">
-                            <div class="jumbotron pulse animated hero-technology carousel-hero" style="background-image: url(&quot;img/Chemical%20comp.jpg&quot;);">
+                            <div class="jumbotron pulse animated hero-technology carousel-hero" style="background-image: url('{% static "img/Chemical Comp.jpg" %}');">
                                 <h1 class="hero-title" style="font-family: 'Open Sans', sans-serif;">Know the ingredient?&nbsp;</h1>
                                 <p class="hero-subtitle" style="font-family: 'Open Sans', sans-serif;">That's Great! Input the ingredient to gain more information</p>
                                 <div class="container">
