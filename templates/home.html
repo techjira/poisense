@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="=en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap home.min.css"%}">
+    <link rel="stylesheet" href="{% static "fonts/ionicons.min.css"%}">
+    <link rel="stylesheet" href="{% static "css/Footer-Dark.css"%}">
+    <link rel="stylesheet" href="{% static "css/Navigation-with-Button.css"%}">
+    <link rel="stylesheet" href="{% static "css/Navigation-Menu.css"%}">
+</head>
+
+<body id="page-top">
+    <div id="nvbar_heading-1">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+            <div class="container"><a class="navbar-brand" href="{% url 'homepage' %}" style="font-family: 'Open Sans', sans-serif;"><img src="{% static "img/Logo%20Small.png"%}" style="max-width: 138px;max-height: 97px;margin-bottom: -41px;margin-top: -50px;"></a><button data-toggle="collapse" class="navbar-toggler"
+                    data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto">
+                          <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="{% url 'sense' %}" style="font-family: 'Open Sans', sans-serif;margin-top: -6px;">Sense an ingredient</a>
+                          </li>
+                    </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="tel:131126" style="background-color: rgb(238,79,79);">SOS</a></span></div>
+            </div>
+        </nav>
+    </div>
+    <header class="masthead text-center text-white d-flex" style="background-image: url('{% static "img/jakob-owens-M0M-FR2iedk-unsplash.jpg" %}');">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase"><strong style="color: rgba(255,72,60,0.87);">is your kid safe?</strong></h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <h1 class="text-faded mb-5" style="font-family: 'Open Sans', sans-serif;color: #f4f7f9;font-size: 20px;"><br>On<br>an average infants and children causes 15,500 poisoning cases each year in<br>Australia. Hence accidental poisoning appears to be one of the top hazards in the<br>household.<br></h1><a class="btn btn-primary btn-xl js-scroll-trigger"
+                    role="button" href="#about">Solution</a></div>
+        </div>
+    </header>
+    <section id="about" class="bg-primary" style="background-color: #a42424;">
+        <div class="container">
+            <div class="row">
+                <div class="col offset-lg-8 mx-auto text-center">
+                    <h2 class="text-white section-heading">How Poisense helps?</h2>
+                    <hr class="light my-4">
+                    <p class="text-faded mb-4" style="font-family: 'Open Sans', sans-serif;">Poisense helps to identify the hazardous and poisonous ingredients in the home so that you and your loved ones could be safe<br></p><a class="btn btn-light btn-xl js-scroll-trigger" role="button" href="#services">Get Started!</a></div>
+            </div>
+        </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Sense an Ingredient</h2>
+                    <hr class="my-4">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row d-md-flex d-lg-flex justify-content-md-center justify-content-lg-center">
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="mx-auto service-box mt-5"><img src="{% static "img/Bottle.svg"%}" style="max-width: 50%;">
+                        <h3 class="mb-3">Get to know about the Product</h3>
+                        <p class="text-muted mb-0" style="font-family: 'Open Sans', sans-serif;">Make sure the product does not contain any harmful chemicals through Poisense.<br></p>
+                        <a href="{% url 'sense' %}" class="btn btn-primary" style="margin-top: 18px;">SENSE</a>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row d-sm-flex justify-content-sm-center">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li style="font-family: 'Open Sans', sans-serif;"><a href="{% url 'sense' %}">Sense an ingredient</a></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3 style="font-family: 'Open Sans', sans-serif;">Feedbacks?</h3>
+                        <p style="font-family: 'Open Sans', sans-serif;">The sole purpose of the application is to keep your household safe from harmful products. Feedback could help us to make close the gap to the above objective. Feel free to message us in the social media links.</p>
+                    </div>
+                    <div class="col item social">
+                      <a href="#"><i class="icon ion-social-facebook"></i></a>
+                      <a href="#"><i class="icon ion-social-twitter"></i></a>
+                      <a href="#"><i class="icon ion-social-instagram"></i></a>
+                    </div>
+                </div>
+                <p class="copyright" style="font-family: 'Open Sans', sans-serif;">Poisense © 2020</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{% static "js/jquery home.min.js"%}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="{% static "js/creative.js"%}"></script>
+</body>
+
+</html>

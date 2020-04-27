@@ -89,3 +89,27 @@
   margin-top: 150px;
 }
 
+@media (min-width: 1200px) {
+  .highlight-phone {
+  }
+}
+
+@media (min-width: 992px) {
+  .highlight-phone {
+  }
+}
+
+@media (min-width: 768px) {
+  .highlight-phone {
+  }
+}
+
+#tab-1 {
+  background-color: white;
+}
+
+#minimal-tabs {
+  align-content: center;
+  /*align-items: center;*/
+}
+

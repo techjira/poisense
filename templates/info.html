@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Ingredient Information</title>
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css"%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="{% static "fonts/font-awesome.min.css"%}">
+    <link rel="stylesheet" href="{% static "fonts/ionicons.min.css"%}">
+    <link rel="stylesheet" href="{% static "css/-Team-Rotating-Cards-BS4-.css"%}">
+    <link rel="stylesheet" href="{% static "css/3D_CSS_PROGRESS_BAR_BY_REDSTAPLER-1.css"%}">
+    <link rel="stylesheet" href="{% static "css/3D_CSS_PROGRESS_BAR_BY_REDSTAPLER.css"%}">
+    <link rel="stylesheet" href="{% static "css/best-carousel-slide.css"%}">
+    <link rel="stylesheet" href="{% static "css/circle-progress-bar.css"%}">
+    <link rel="stylesheet" href="{% static "css/Features-Blue.css"%}">
+    <link rel="stylesheet" href="{% static "css/Features-Boxed.css"%}">
+    <link rel="stylesheet" href="{% static "css/Features-Clean.css"%}">
+    <link rel="stylesheet" href="{% static "css/Footer-Basic.css"%}">
+    <link rel="stylesheet" href="{% static "css/Footer-Dark.css"%}">
+    <link rel="stylesheet" href="{% static "css/Google-Style-Text-Input.css"%}">
+    <link rel="stylesheet" href="{% static "css/Header-Blue--Sticky-Header--Smooth-Scroll.css"%}">
+    <link rel="stylesheet" href="{% static "css/Header-Blue.css"%}">
+    <link rel="stylesheet" href="{% static "css/Header-Dark.css"%}">
+    <link rel="stylesheet" href="{% static "css/Highlight-Phone-1.css"%}">
+    <link rel="stylesheet" href="{% static "css/Highlight-Phone-2.css"%}">
+    <link rel="stylesheet" href="{% static "css/Highlight-Phone.css"%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="{% static "css/Login-Form-Dark.css"%}">
+    <link rel="stylesheet" href="{% static "css/Navigation-with-Button.css"%}">
+    <link rel="stylesheet" href="{% static "css/News-Cards.css"%}">
+    <link rel="stylesheet" href="{% static "css/Paralax-Box.css"%}">
+    <link rel="stylesheet" href="{% static "css/Projects-Horizontal.css"%}">
+    <link rel="stylesheet" href="{% static "css/Registration-Form-with-Photo.css"%}">
+    <link rel="stylesheet" href="{% static "css/styles.css"%}">
+    <link rel="stylesheet" href="{% static "css/Team-Boxed.css"%}">
+    <link rel="stylesheet" href="{% static "css/Team-Clean.css"%}">
+    <link rel="stylesheet" href="{% static "css/Team-Grid.css"%}">
+    <link rel="stylesheet" href="{% static "css/Minimal-tabs.css"%}">
+    <link rel="stylesheet" href="{% static "css/Minimal-tabs-1.css"%}">
+</head>
+
+<script type="text/javascript">
+  function dynamicUrl() {
+    var url = "/static/img/" + code + ".png"
+    return url;
+  }
+</script>
+
+<body>
+  <div id="nvbar_heading-1">
+      <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+          <div class="container"><a class="navbar-brand" href="{% url 'homepage' %}" style="font-family: 'Open Sans', sans-serif;"><img src="/static/img/Logo%20Small.png" style="max-width: 138px;max-height: 97px;margin-bottom: -41px;margin-top: -50px;"></a><button data-toggle="collapse" class="navbar-toggler"
+                  data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+              <div class="collapse navbar-collapse" id="navcol-1">
+                  <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'sense' %}" style="font-family: 'Open Sans', sans-serif;margin-top: -6px;">Sense an ingredient</a></li>
+                  </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="tel:131126" style="background-color: rgb(238,79,79);">SOS</a></span></div>
+          </div>
+      </nav>
+  </div>
+
+
+    <div class="features-boxed" style="background-color: rgba(241,15,15,0.81);">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center flash animated" style="color: rgb(255,255,255);margin-bottom: -15px;">HAZARD</h2>
+                <h2 class="text-center" style="color: rgb(255,255,255);">
+                  {% if element_names %}
+                    {{element_names}}
+                  {% endif %}
+                </h2>
+            </div>
+
+            <div class="row justify-content-center pulse animated">
+              {% for code in ghs_code %}
+                <div class="col-sm-2 col-md-2 col-lg-2 item">
+                    <div class="box"><img src="/static/img/{{ code }}.png" style="width: 100px;">
+                        <h3 class="name">{{ code }}</h3>
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="features-boxed">
+        <div id="minimal-tabs">
+            <ul class="nav nav-tabs text-center d-flex d-xl-flex justify-content-center justify-content-xl-center">
+                <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-2">Effects and Precautions</a></li>
+                <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">Prevention</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active team-clean" role="tabpanel" id="tab-2">
+                    <div class="container pulse animated">
+                        <div class="intro"></div>
+                        <div class="row d-xl-flex justify-content-xl-center people" data-aos="fade-up" data-aos-duration="300">
+                            {% if hs_inhale %}
+                            <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" src="/static/img/Breathing Problem.svg">
+                                <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Inhalation</h3>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;color: rgb(249,13,13);">{{ hs_inhale }}</p>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;color: rgb(125,130,133);">{{ rs_inhale }}<br></p>
+                            </div>
+                            {% endif %}
+
+                            {% if hs_skin %}
+                            <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" src="/static/img/Skin.svg">
+                                <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Skin Contact</h3>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;color: rgb(249,13,13);">{{ hs_skin }}</p>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;">{{ rs_skin }}<br></p>
+                            </div>
+                            {% endif %}
+
+                            {% if hs_eye %}
+                            <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" src="/static/img/Eye.svg">
+                                <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Eye Contact</h3>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;color: rgb(249,13,13);">{{ hs_eye }}</p>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;">{{ rs_eye }}</p>
+                            </div>
+                            {% endif %}
+
+                            {% if hs_ingestion %}
+                            <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" src="/static/img/open mouth.svg">
+                                <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Ingestion</h3>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;color: rgb(249,13,13);">{{ hs_ingestion }}</p>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;">{{ rs_ingestion }}</p>
+                            </div>
+                            {% endif %}
+
+                            {% if hs_other %}
+                            <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" src="/static/img/Irritant.png">
+                                <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Other</h3>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;color: rgb(249,13,13);">{{ hs_other }}</p>
+                                <p class="description" style="font-family: 'Open Sans', sans-serif;">{{ rs_other }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane features-clean" role="tabpanel" id="tab-3">
+                    <div class="container pulse animated">
+                        <div class="row d-xl-flex justify-content-xl-center features" data-aos="fade-up" data-aos-duration="300">
+                            <div class="col-sm-6 col-lg-4 item"><i class="icon ion-information-circled icon"></i>
+                                <h3 class="name">Prevention</h3>
+                                {% for pre in prevention %}
+                                  <p class="description" style="margin-top: 8px;">{{ pre }}</p>
+                                {% endfor %}
+                            </div>
+                            <div class="col-sm-6 col-lg-4 item"><i class="icon ion-ios-box icon"></i>
+                                <h3 class="name">Storage</h3>
+                                {% for store in storage %}
+                                  <p class="description" style="margin-top: 8px;">{{ store }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-dark">
+      <footer>
+          <div class="container">
+              <div class="row d-sm-flex justify-content-sm-center">
+                  <div class="col-sm-6 col-md-3 item">
+                      <h3>Services</h3>
+                      <ul>
+                          <li style="font-family: 'Open Sans', sans-serif;"><a href="{% url 'sense' %}">Sense an ingredient</a></li>
+                          <li></li>
+                          <li></li>
+                      </ul>
+                  </div>
+                  <div class="col-md-6 item text">
+                      <h3 style="font-family: 'Open Sans', sans-serif;">Feedbacks?</h3>
+                      <p style="font-family: 'Open Sans', sans-serif;">The sole purpose of the application is to keep your household safe from harmful products. Feedback could help us to make close the gap to the above objective. Feel free to message us in the social media links.</p>
+                  </div>
+                  <div class="col item social">
+                    <a href="#"><i class="icon ion-social-facebook"></i></a>
+                    <a href="#"><i class="icon ion-social-twitter"></i></a>
+                    <a href="#"><i class="icon ion-social-instagram"></i></a>
+                  </div>
+              </div>
+              <p class="copyright" style="font-family: 'Open Sans', sans-serif;">Poisense © 2020</p>
+          </div>
+      </footer>
+    <script src="{% static "js/jquery.min.js"%}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
+    <script src="{% static "js/bs-init.js"%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="{% static "js/3D_CSS_PROGRESS_BAR_BY_REDSTAPLER.js"%}"></script>
+    <script src="{% static "js/Paralax-Box.js"%}"></script>
+    <script src="{% static "js/Header-Blue--Sticky-Header--Smooth-Scroll.js"%}"></script>
+    <script src="{% static "js/Header-Blue--Sticky-Header--Smooth-Scroll-1.js"%}"></script>
+
+</body>
+
+</html>

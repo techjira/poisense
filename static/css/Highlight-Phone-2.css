@@ -32,7 +32,7 @@
 
 @media (max-width:767px) {
   .highlight-phone .intro {
-    max-width: 90%;
+    max-width: none;
   }
 }
 
@@ -68,12 +68,11 @@
 }
 
 .highlight-phone .iphone-mockup {
-  /*align-content: center;*/
   position: relative;
   max-width: 260px;
   margin-top: -30px;
   margin-bottom: -230px;
-  /*transform: rotate(-15deg);*/
+  transform: rotate(-15deg);
 }
 
 .highlight-phone .iphone-mockup img.device {
