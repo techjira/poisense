@@ -21,23 +21,29 @@ import time
 import random
 import string
 
+# used to first call the password page
+def password(request):
+    return render(request,'password.html')
+
+# requests the home page
 def home(request):
     return render(request, 'home.html')
 
+# using the following function to generate random name for image files to avoid file name errors
 def randomString(stringLength=8):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
+# complete functionality of the app is in this function
 def sense(request):
     fs = FileSystemStorage()
     if request.method == 'POST':
+        # loading forms
         uploadform = UploadFileForm(request.POST,request.FILES)
         input_form = ChemForm(request.POST)
-        print(uploadform.is_valid())
         if uploadform.is_valid():
             if request.method == 'POST' and request.FILES['file']:
                 file = request.FILES['file']
-                # file_name = request.FILES['file'].name
                 file_name = randomString(8)
                 filename = fs.save(file_name, file)
                 uploaded_file_url = fs.url(filename)
@@ -50,11 +56,11 @@ def sense(request):
             text = [x.strip() for x in text]
             print(text)
         else:
-            text = ['diphenylamine']
+            text = []
 
         element_names,hs_eye, hs_skin, hs_inhale, hs_ingestion, hs_other,ghs_code,prevention,rs_eye, rs_skin, rs_inhale, rs_ingestion, rs_other,storage = retrieving(text)
-        print(element_names)
 
+        # if no ingredients gets detected then safe.html is displayed
         if element_names == "NO ELEMENT FOUND":
             uploadform = UploadFileForm()
             input_form = ChemForm()

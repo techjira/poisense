@@ -17,6 +17,7 @@ import sys
 import os
 import time
 
+# the below function is used to ectract the text from an image
 def read_text(img):
     # Ocr
     url_api = "https://api.ocr.space/parse/image"
@@ -74,6 +75,7 @@ def read_text(img):
     text_detected = text_detected.split(",")
     return text_detected
 
+# the below code is used to process the image
 def img_resize(img):
     if (os.path.getsize(img)/ (1024 * 1024)) > 1:
         img = cv2.imread(img)
@@ -87,7 +89,7 @@ def img_resize(img):
     else:
         return cv2.imread(img)
 
-
+# the main function which calls the other functionalities
 def final_text(img):
     img = img_resize(img)
     text = read_text(img)

@@ -47,7 +47,8 @@ def cleaning(value):
     print(value)
     return value
 
-
+# using the following function to get the details regarding eye, skin, inhalation, ingestion from hazard
+# statement and precaution statements
 def human_senses(id,statement):
     eye = []
     inhale = []
@@ -55,14 +56,9 @@ def human_senses(id,statement):
     ingestion = []
     other = []
     if id == 'hs':
-        val1 = 'drows'
+        val1 = 'respiratory'
     else:
         val1 = 'breath'
-
-    if id == 'hs':
-        val2 = 'skin'
-    else:
-        val2 = 'skin'
 
     for hs in statement:
         hs = hs.lower()
@@ -70,20 +66,39 @@ def human_senses(id,statement):
             eye.append(hs)
         elif "skin" in hs:
             skin.append(hs)
-        elif val1 in hs:
-            inhale.append(hs)
         elif 'swallow' in hs:
             ingestion.append(hs)
+        elif "inhale" in hs:
+            inhale.append(hs)
+        elif "burns" in hs:
+            skin.append(hs)
+        elif "hair" in hs:
+            skin.append(hs)
+        elif "respiratory" in hs:
+            inhale.append(hs)
+        elif "breath" in hs:
+            inhale.append(hs)
+        elif "fire" in hs:
+            other.append("In case of fire: extinguish appropriately")
         else:
             other.append(hs)
 
-    eye = '. '.join(eye)
-    skin = '. '.join(skin)
-    inhale = '. '.join(inhale)
-    ingestion = '. '.join(ingestion)
-    other = '. '.join(other)
+    # capitalizing the first letter of sentences
+    eye = [x.capitalize() for x in eye]
+    skin = [x.capitalize() for x in skin]
+    ingestion = [x.capitalize() for x in ingestion]
+    inhale = [x.capitalize() for x in inhale]
+    other = [x.capitalize() for x in other]
+
+    eye = ' '.join(eye)
+    skin = ' '.join(skin)
+    inhale = ' '.join(inhale)
+    ingestion = ' '.join(ingestion)
+    other = ' '.join(other)
     return eye, skin, inhale, ingestion, other
 
+# This is the main function, where all the first level of data ectraction happens by extracting from
+# the database.
 def retrieving(text):
     found_list = check_db(text)
     if len(found_list) == 1:
@@ -104,21 +119,23 @@ def retrieving(text):
     ghs_code = []
     hazard_statement = []
     for each in found_list:
+        # getting the hazard statement codes
         HSC = (Hazardchemicals.objects.get(chemical_name__iexact=each).hazardstatementcode).split('; ')
         HSC = [x for x in HSC if not x.startswith('A')]
         HazardStatementCode = HazardStatementCode + HSC
 
-
+        # getting the GHS codes
         ghsc = (Hazardchemicals.objects.get(chemical_name__iexact=each).ghs_code).split('; ')
         while("" in ghsc) :
             ghsc.remove("")
         ghs_code = ghs_code + ghsc
 
-
+        # getting the hazard statements
         hazard_statement = hazard_statement + (Hazardchemicals.objects.get(chemical_name__iexact=each).hazard_statement).split('; ')
     HazardStatementCode = list(set(HazardStatementCode))
     ghs_code = list(set(ghs_code))
 
+    # extracting the GHS names
     ghs_code_names = []
     for val in ghs_code:
         if val=='GHS01':
@@ -142,10 +159,20 @@ def retrieving(text):
 
     ghs_code = ghs_code_names
 
+    # filtering hazard statements
     hazard_statement = list(set(hazard_statement))
+    hazard_smt = hazard_statement
+    hazard_statement = []
+    for statement in hazard_smt:
+        if "..." in statement:
+            pass
+        else:
+            hazard_statement.append(statement)
+
 
     hs_eye, hs_skin, hs_inhale, hs_ingestion, hs_other = human_senses('hs',hazard_statement)
 
+    # getting the details of prevention, response and storage
     prevention = []
     response = []
     storage = []
