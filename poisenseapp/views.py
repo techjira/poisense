@@ -18,9 +18,15 @@ import re
 import sys
 import os
 import time
+import random
+import string
 
 def home(request):
     return render(request, 'home.html')
+
+def randomString(stringLength=8):
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
 
 def sense(request):
     fs = FileSystemStorage()
@@ -31,7 +37,8 @@ def sense(request):
         if uploadform.is_valid():
             if request.method == 'POST' and request.FILES['file']:
                 file = request.FILES['file']
-                file_name = request.FILES['file'].name
+                # file_name = request.FILES['file'].name
+                file_name = randomString(8)
                 filename = fs.save(file_name, file)
                 uploaded_file_url = fs.url(filename)
                 text = final_text(str(uploaded_file_url)[1:])
@@ -40,6 +47,7 @@ def sense(request):
                 print(text)
         elif input_form.is_valid():
             text = request.POST['ingre_name'].lower().split(',')
+            text = [x.strip() for x in text]
             print(text)
         else:
             text = ['diphenylamine']

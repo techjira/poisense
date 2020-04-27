@@ -37,6 +37,7 @@ def read_text(img):
     try:
         parsed_results = result.get("ParsedResults")[0]
         text_detected = parsed_results.get("ParsedText")
+        print(1)
     except:
         apikey = "66ecf22d2d88957"
         result = requests.post(url_api,
@@ -52,8 +53,10 @@ def read_text(img):
         try:
             parsed_results = result.get("ParsedResults")[0]
             text_detected = parsed_results.get("ParsedText")
+            print(2)
         except:
             text_detected =""
+            print(3)
 
 
     text_detected = text_detected.lower()

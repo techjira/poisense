@@ -78,21 +78,27 @@
                     <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST">
                       {% csrf_token %}
                       {{ uploadform }}
-                      <div class="d-block iphone-mockup">
-                        <input class="btn btn-primary top-buffer" type="button" style="font-family: 'Open Sans', sans-serif;" value="Click/Upload Image" onclick="document.getElementById('file').click();">
+                      <div class="d-block iphone-mockup" style="padding-top:10px">
+                        <button class="btn btn-primary top-buffer" type="button" style="font-family: 'Open Sans', sans-serif;" value="" onclick="document.getElementById('file').click();">Click/Upload Image</button>
                       </div>
                       <br>
                       <img id="output"/ width="100%" height="100%">
                       <br>
-                      <input class="btn btn-primary top-buffer" id="snap" type="submit" style="font-family: 'Open Sans', sans-serif;" value="Submit">
+                      <div style="padding-top:10px">
+                      <button class="btn btn-primary top-buffer" id="snap" type="submit" style="font-family: 'Open Sans', sans-serif;" value="Submit">Submit</button>
+                    </div>
                     </form>
                     </div>
                 <div class="col-sm-6 col-md-4 item"><i class="fa fa-info icon"></i>
                     <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Ingredient Input</h3>
                     <p class="description" style="font-family: 'Open Sans', sans-serif;">Know what the ingredient is? Simply search using the text box given below.</p>
+                    <br>
+                    <br>
                     <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST">
                     {% csrf_token %}
                     {{ input_form }}
+                    <br>
+                    <br>
                     <button class="btn btn-primary top-buffer" id="ingredient_search" type="submit" style="font-family: 'Open Sans', sans-serif;" onclick="document.getElementById('ingredient_input').click();">Search</button>
                     </form>
                 </div>

@@ -90,8 +90,8 @@ def retrieving(text):
         element_names = found_list[0]
         element_names = element_names.capitalize()
     elif len(found_list)>1:
-        element_names = [x.capitalize() for x in element_names]
-        element_names = ', '.join(found_list)
+        element_names = [x.capitalize() for x in found_list]
+        element_names = ', '.join(element_names)
         element_names = re.sub(r"(\b, \b)(?!.*\1)", r" and ", element_names)
     else:
         element_names = "NO ELEMENT FOUND"
