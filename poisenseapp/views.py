@@ -37,6 +37,7 @@ def randomString(stringLength=8):
 # complete functionality of the app is in this function
 def sense(request):
     fs = FileSystemStorage()
+    query_results = list(Hazardchemicals.objects.all().values_list("chemical_name", flat=True))
     if request.method == 'POST':
         # loading forms
         uploadform = UploadFileForm(request.POST,request.FILES)
@@ -51,12 +52,12 @@ def sense(request):
                 text = [x.strip() for x in text]
                 fs.delete(filename)
                 print(text)
-        elif input_form.is_valid():
-            text = request.POST['ingre_name'].lower().split(',')
-            text = [x.strip() for x in text]
-            print(text)
         else:
+            # text box, with dropdown list of elements
             text = []
+            dropdown = request.POST.get('browser', None)
+            text.append(dropdown)
+            print(text)
 
         element_names,hs_eye, hs_skin, hs_inhale, hs_ingestion, hs_other,ghs_code,prevention,rs_eye, rs_skin, rs_inhale, rs_ingestion, rs_other,storage = retrieving(text)
 
@@ -64,7 +65,7 @@ def sense(request):
         if element_names == "NO ELEMENT FOUND":
             uploadform = UploadFileForm()
             input_form = ChemForm()
-            return render(request, 'safe.html', {'uploadform': uploadform,'input_form':input_form})
+            return render(request, 'safe.html', {'uploadform': uploadform,'input_form':input_form,'query_results':query_results})
 
         return render(request, 'info.html', {
             'element_names':element_names,'hs_eye':hs_eye,'hs_skin':hs_skin,'hs_inhale':hs_inhale,'hs_ingestion':hs_ingestion,'hs_other':hs_other,'ghs_code':ghs_code,'prevention':prevention,'rs_eye':rs_eye,'rs_skin':rs_skin,'rs_inhale':rs_inhale,'rs_ingestion':rs_ingestion,'rs_other':rs_other,'storage':storage})
@@ -72,4 +73,4 @@ def sense(request):
         uploadform = UploadFileForm()
         input_form = ChemForm()
 
-    return render(request, 'sense.html', {'uploadform': uploadform,'input_form':input_form})
+    return render(request, 'sense.html', {'uploadform': uploadform,'input_form':input_form,'query_results':query_results})

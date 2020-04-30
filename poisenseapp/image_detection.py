@@ -63,6 +63,9 @@ def read_text(img):
     text_detected = text_detected.lower()
     text_detected = re.sub(r'\r\n', ' ',text_detected)
     text_detected = re.sub(r'\n', ' ',text_detected)
+    text_detected = re.sub(r'[0-9]','',text_detected)
+    text_detected = re.sub(r'%','',text_detected)
+    text_detected = re.sub(r'w/v','',text_detected)
     text_detected = re.findall(r'[li]ngredient[s]?:?(.*?)[\.\?]',text_detected)
 
     if len(text_detected) > 1:

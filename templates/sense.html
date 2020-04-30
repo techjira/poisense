@@ -52,6 +52,7 @@
       }
     };
     </script>
+
     <!-- <script>
     $('#image_form').submit(function() {
     $('#gif').css('visibility', 'visible');
@@ -70,7 +71,8 @@
                           <li class="nav-item" role="presentation">
                             <a class="nav-link" href="{% url 'sense' %}" style="font-family: 'Open Sans', sans-serif;margin-top: -6px;">Sense an ingredient</a>
                           </li>
-                    </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="tel:131126" style="background-color: rgb(238,79,79);">SOS</a></span></div>
+                    </ul>
+                  </div>
             </div>
         </nav>
     </div>
@@ -105,13 +107,18 @@
                     <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Ingredient Input</h3>
                     <p class="description" style="font-family: 'Open Sans', sans-serif;">Know what the ingredient is? Simply search using the text box given below.</p>
                     <br>
-                    <br>
                     <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST">
-                    {% csrf_token %}
-                    {{ input_form }}
+                      {% csrf_token %}
+                      <input list="browsers" name="browser" id="ingre_name">
+                      <datalist id="browsers">
+                        {% for item in query_results %}
+                          <option value="{{ item }}">
+                        {% endfor %}
+                      </datalist>
                     <br>
-                    <button class="btn btn-primary top-buffer" id="ingredient_search" type="submit" style="font-family: 'Open Sans', sans-serif;" onclick="document.getElementById('ingredient_input').click();">Search</button>
+                    <button class="btn btn-primary top-buffer" id="ingredient_search" type="submit" style="font-family: 'Open Sans', sans-serif;" onclick="document.getElementById('ingre_name').click();">Search</button>
                     </form>
+
                 </div>
         </div>
     </div>
@@ -135,7 +142,7 @@
                     <div class="col item social">
                       <a href="#"><i class="icon ion-social-facebook"></i></a>
                       <a href="#"><i class="icon ion-social-twitter"></i></a>
-                      <a href="#"><i class="icon ion-social-instagram"></i></a>
+                      <a href="https://www.instagram.com/poisense.tech/"><i class="icon ion-social-instagram"></i></a>
                     </div>
                 </div>
                 <p class="copyright" style="font-family: 'Open Sans', sans-serif;">Poisense © 2020</p>

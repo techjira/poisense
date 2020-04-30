@@ -36,11 +36,11 @@ ALLOWED_HOSTS = [
     'poisense.tech',
     'www.poisense.tech',
     'poisenseheroku.herokuapp.com',
-    'poizense.herokuapp.com',
     '127.0.0.1',
     'localhost',
     '192.168.1.106',
     '118.138.119.38',
+    '192.168.1.8',
 ]
 
 

@@ -100,7 +100,9 @@ def human_senses(id,statement):
 # This is the main function, where all the first level of data ectraction happens by extracting from
 # the database.
 def retrieving(text):
+    print(text)
     found_list = check_db(text)
+    print(found_list)
     if len(found_list) == 1:
         element_names = found_list[0]
         element_names = element_names.capitalize()
