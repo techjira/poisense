@@ -47,6 +47,31 @@ def cleaning(value):
     print(value)
     return value
 
+
+def pull_ghs_info(ghs_code):
+    ghs_code_explain = []
+    for each in ghs_code:
+        if each == 'GHS01':
+            ghs_code_explain.append("Explosion, blast or projection hazard.")
+        elif each == 'GHS02':
+            ghs_code_explain.append("Flammable liquids, solids and gases; including self-heating and self-igniting substances.")
+        elif each == 'GHS03':
+            ghs_code_explain.append("Oxidising liquids, solids and gases, may cause or intensify fire.")
+        elif each == 'GHS04':
+            ghs_code_explain.append("Gases under pressure.")
+        elif each == 'GHS05':
+            ghs_code_explain.append("Fatal or toxic if swallowed, inhaled or in contact with skin.")
+        elif each == 'GHS06':
+            ghs_code_explain.append("Low level toxicity. This includes respiratory, skin, and eye irritation, skin sensitisers and chemicals harmful if swallowed, inhaled or in contact with skin.")
+        elif each == 'GHS07':
+            ghs_code_explain.append("Corrosive chemicals, may cause severe skin and eye damage and may be corrosive to metals.")
+        elif each == 'GHS08':
+            ghs_code_explain.append("Chronic health hazards; this includes aspiratory and respiratory hazards, carcinogenicity, mutagenicity and reproductive toxicity.")
+        elif each == 'GHS09':
+            ghs_code_explain.append("Hazardous to aquatic life and the environment.")
+    return ghs_code_explain
+
+
 # using the following function to get the details regarding eye, skin, inhalation, ingestion from hazard
 # statement and precaution statements
 def human_senses(id,statement):
@@ -112,7 +137,7 @@ def retrieving(text):
         element_names = re.sub(r"(\b, \b)(?!.*\1)", r" and ", element_names)
     else:
         element_names = "NO ELEMENT FOUND"
-        return element_names,'','','','','','','','','','','','',''
+        return element_names,'','','','','','','','','','','','','',''
 
 
 
@@ -137,6 +162,9 @@ def retrieving(text):
     HazardStatementCode = list(set(HazardStatementCode))
     ghs_code = list(set(ghs_code))
 
+    ghs_code_explain = pull_ghs_info(ghs_code)
+
+
     # extracting the GHS names
     ghs_code_names = []
     for val in ghs_code:
@@ -160,6 +188,8 @@ def retrieving(text):
             ghs_code_names.append('Compressed Gas')
 
     ghs_code = ghs_code_names
+    ghs_dict = dict(zip(ghs_code, ghs_code_explain))
+    print(ghs_dict)
 
     # filtering hazard statements
     hazard_statement = list(set(hazard_statement))
@@ -198,4 +228,4 @@ def retrieving(text):
     rs_eye, rs_skin, rs_inhale, rs_ingestion, rs_other = human_senses('rs',response)
 
 
-    return element_names,hs_eye, hs_skin, hs_inhale, hs_ingestion, hs_other,ghs_code,prevention,rs_eye, rs_skin, rs_inhale, rs_ingestion, rs_other,storage
+    return element_names,hs_eye, hs_skin, hs_inhale, hs_ingestion, hs_other,ghs_code,prevention,rs_eye, rs_skin, rs_inhale, rs_ingestion, rs_other,storage, ghs_dict

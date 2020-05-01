@@ -59,7 +59,7 @@ def sense(request):
             text.append(dropdown)
             print(text)
 
-        element_names,hs_eye, hs_skin, hs_inhale, hs_ingestion, hs_other,ghs_code,prevention,rs_eye, rs_skin, rs_inhale, rs_ingestion, rs_other,storage = retrieving(text)
+        element_names,hs_eye, hs_skin, hs_inhale, hs_ingestion, hs_other,ghs_code,prevention,rs_eye, rs_skin, rs_inhale, rs_ingestion, rs_other,storage, ghs_dict = retrieving(text)
 
         # if no ingredients gets detected then safe.html is displayed
         if element_names == "NO ELEMENT FOUND":
@@ -68,7 +68,7 @@ def sense(request):
             return render(request, 'safe.html', {'uploadform': uploadform,'input_form':input_form,'query_results':query_results})
 
         return render(request, 'info.html', {
-            'element_names':element_names,'hs_eye':hs_eye,'hs_skin':hs_skin,'hs_inhale':hs_inhale,'hs_ingestion':hs_ingestion,'hs_other':hs_other,'ghs_code':ghs_code,'prevention':prevention,'rs_eye':rs_eye,'rs_skin':rs_skin,'rs_inhale':rs_inhale,'rs_ingestion':rs_ingestion,'rs_other':rs_other,'storage':storage})
+            'element_names':element_names,'hs_eye':hs_eye,'hs_skin':hs_skin,'hs_inhale':hs_inhale,'hs_ingestion':hs_ingestion,'hs_other':hs_other,'ghs_code':ghs_code,'prevention':prevention,'rs_eye':rs_eye,'rs_skin':rs_skin,'rs_inhale':rs_inhale,'rs_ingestion':rs_ingestion,'rs_other':rs_other,'storage':storage,'ghs_dict':ghs_dict})
     else:
         uploadform = UploadFileForm()
         input_form = ChemForm()
