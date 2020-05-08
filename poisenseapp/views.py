@@ -25,9 +25,24 @@ import string
 def password(request):
     return render(request,'password.html')
 
+#Header
+def header(request):
+    return render(request,'header.html')
+
+#Footer
+def footer(request):
+    return render(request,'footer.html')
+
 # requests the home page
 def home(request):
     return render(request, 'home.html')
+
+def ssl(request):
+    return render(request, '.well-known/acme-challenge/YWObyQs8K90gboL2UYaiKB6_k2emxhUuG-mZQ7yOg4c')
+
+def ssl2(request):
+    return render(request, '.well-known/acme-challenge/51_a9PO7gke53ZMZV0kbWLwiLIAn9xM2gsPFEaQS2j0')
+
 
 # using the following function to generate random name for image files to avoid file name errors
 def randomString(stringLength=8):

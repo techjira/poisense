@@ -55,19 +55,20 @@
     return url;
   }
 </script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#header").load("{% url 'header' %}");
+  $("#footer").load("{% url 'footer' %}");
+});
+</script>
 
 <body>
-  <div id="nvbar_heading-1">
-      <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-          <div class="container"><a class="navbar-brand" href="{% url 'homepage' %}" style="font-family: 'Open Sans', sans-serif;"><img src="/static/img/Logo%20Small.png" style="max-width: 138px;max-height: 97px;margin-bottom: -41px;margin-top: -50px;"></a><button data-toggle="collapse" class="navbar-toggler"
-                  data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-              <div class="collapse navbar-collapse" id="navcol-1">
-                  <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'sense' %}" style="font-family: 'Open Sans', sans-serif;margin-top: -6px;">Sense an ingredient</a></li>
-                  </ul></div>
-          </div>
-      </nav>
-  </div>
+  <div id="header"></div>
 
 
     <div class="features-boxed" style="background-color: rgba(241,15,15,0.81);">
@@ -183,31 +184,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-dark">
-      <footer>
-          <div class="container">
-              <div class="row d-sm-flex justify-content-sm-center">
-                  <div class="col-sm-6 col-md-3 item">
-                      <h3>Services</h3>
-                      <ul>
-                          <li style="font-family: 'Open Sans', sans-serif;"><a href="{% url 'sense' %}">Sense an ingredient</a></li>
-                          <li></li>
-                          <li></li>
-                      </ul>
-                  </div>
-                  <div class="col-md-6 item text">
-                      <h3 style="font-family: 'Open Sans', sans-serif;">Feedbacks?</h3>
-                      <p style="font-family: 'Open Sans', sans-serif;">The sole purpose of the application is to keep your household safe from harmful products. Feedback could help us to make close the gap to the above objective. Feel free to message us in the social media links.</p>
-                  </div>
-                  <div class="col item social">
-                    <a href="#"><i class="icon ion-social-facebook"></i></a>
-                    <a href="#"><i class="icon ion-social-twitter"></i></a>
-                    <a href="https://www.instagram.com/poisense.tech/"><i class="icon ion-social-instagram"></i></a>
-                  </div>
-              </div>
-              <p class="copyright" style="font-family: 'Open Sans', sans-serif;">Poisense © 2020</p>
-          </div>
-      </footer>
+    <div id="footer"></div>
     <script src="{% static "js/jquery.min.js"%}"></script>
     <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
     <script src="{% static "js/bs-init.js"%}"></script>

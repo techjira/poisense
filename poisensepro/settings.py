@@ -146,8 +146,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
         STATIC_DIR,
 ]
-
-#  Add configuration for static files storage using whitenoise
+#
+# #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # # this is used by pruthvi to run on his local system, pls comment the staticfiles when putting this up on heroku
