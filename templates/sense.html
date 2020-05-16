@@ -4,44 +4,34 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Sense an Ingredient</title>
-    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css"%}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-    <link rel="stylesheet" href="{% static "fonts/font-awesome.min.css"%}">
-    <link rel="stylesheet" href="{% static "fonts/ionicons.min.css"%}">
-    <link rel="stylesheet" href="{% static "css/-Team-Rotating-Cards-BS4-.css"%}">
-    <link rel="stylesheet" href="{% static "css/3D_CSS_PROGRESS_BAR_BY_REDSTAPLER-1.css"%}">
-    <link rel="stylesheet" href="{% static "css/3D_CSS_PROGRESS_BAR_BY_REDSTAPLER.css"%}">
-    <link rel="stylesheet" href="{% static "css/best-carousel-slide.css"%}">
-    <link rel="stylesheet" href="{% static "css/circle-progress-bar.css"%}">
-    <link rel="stylesheet" href="{% static "css/Features-Blue.css"%}">
-    <link rel="stylesheet" href="{% static "css/Features-Boxed.css"%}">
-    <link rel="stylesheet" href="{% static "css/Features-Clean.css"%}">
-    <link rel="stylesheet" href="{% static "css/Footer-Basic.css"%}">
-    <link rel="stylesheet" href="{% static "css/Footer-Dark.css"%}">
-    <link rel="stylesheet" href="{% static "css/Google-Style-Text-Input.css"%}">
-    <link rel="stylesheet" href="{% static "css/Header-Blue.css"%}">
-    <link rel="stylesheet" href="{% static "css/Header-Dark.css"%}">
-    <link rel="stylesheet" href="{% static "css/Highlight-Phone-1.css"%}">
-    <link rel="stylesheet" href="{% static "css/Highlight-Phone.css"%}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-    <link rel="stylesheet" href="{% static "css/Login-Form-Dark.css"%}">
-    <link rel="stylesheet" href="{% static "css/Navigation-with-Button.css"%}">
-    <link rel="stylesheet" href="{% static "css/News-Cards.css"%}">
-    <link rel="stylesheet" href="{% static "css/Paralax-Box.css"%}">
-    <link rel="stylesheet" href="{% static "css/Projects-Horizontal.css"%}">
-    <link rel="stylesheet" href="{% static "css/Registration-Form-with-Photo.css"%}">
-    <link rel="stylesheet" href="{% static "css/styles.css"%}">
-    <link rel="stylesheet" href="{% static "css/Team-Boxed.css"%}">
-    <link rel="stylesheet" href="{% static "css/Team-Clean.css"%}">
-    <link rel="stylesheet" href="{% static "css/Team-Grid.css"%}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  <title>Sense an Ingredient</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+  <link href="/static/assets/img/icon.png" rel="icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/icofont/icofont.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/boxicons/css/boxicons.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/remixicon/remixicon.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/venobox/venobox.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/owl.carousel/assets/owl.carousel.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/aos/aos.css"%}" rel="stylesheet">
+  <style media="screen">
+  @media only screen and (max-width: 1026px) {
+  #fadeshow1 {
+      display: none;
+  }
+}
+.pointer {cursor: pointer;}
+  </style>
+  <!-- Template Main CSS File -->
+  <link href="{% static "assets/css/style home.css"%}" rel="stylesheet">
 
     <script>
       var loadFile = function(event) {
@@ -59,88 +49,101 @@
     </script>
     <script>
     $(function(){
-      $("#header").load("{% url 'header' %}");
+      $("#header_file").load("{% url 'header' %}");
       $("#footer").load("{% url 'footer' %}");
     });
     </script>
-    <!-- <script>
-    $('#image_form').submit(function() {
-    $('#gif').css('visibility', 'visible');
-    });
-    </script> -->
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165910995-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-165910995-1');
-</script>
 
 </head>
 
-<body id="page-top">
-  <div id="header"></div>
-    <div class="features-blue">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center" style="font-family: 'Open Sans', sans-serif;">Sense an Ingredient</h2>
-            </div>
+<body>
+  <div id="header_file"></div>
 
-            <!-- <img src="{% static "img/loader.gif"%}" id="gif" style="display: block; margin: 0 auto; width: 100px; visibility: hidden;"> -->
-              <!-- <img src="{% static "img/loader.gif"%}" alt="processing..." />
-            </div> -->
+  <main id="main">
 
 
-            <div class="row d-sm-flex justify-content-sm-center features">
-                <div class="col-sm-6 col-md-6 item"><i class="fa fa-camera icon"></i>
-                    <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Using Camera</h3>
-                    <p class="description" style="font-family: 'Open Sans', sans-serif;">Not sure what to find? Place the product upright with the ingredients visible to capture an image.</p>
-                    <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST" id="image_form">
-                      {% csrf_token %}
-                      {{ uploadform }}
-                      <div class="d-block iphone-mockup" style="padding-top:10px">
-                        <button class="btn btn-primary top-buffer" type="submit" style="font-family: 'Open Sans', sans-serif;" value="" onclick="document.getElementById('file').click();">Click/Upload Image</button>
-                      </div>
-                      <img id="output"/ width="100%" height="100%">
-                      <div style="padding-top:10px">
-                      <button class="btn btn-primary top-buffer" id="snap" type="submit" style="font-family: 'Open Sans', sans-serif;" value="Submit">Submit</button>
-                    </div>
-                    </form>
-                    </div>
-                <div class="col-sm-6 col-md-6 item"><i class="fa fa-info icon"></i>
-                    <h3 class="name" style="font-family: 'Open Sans', sans-serif;">Ingredient Input</h3>
-                    <p class="description" style="font-family: 'Open Sans', sans-serif;">Know what the ingredient is? Simply search using the text box given below.</p>
-                    <br>
-                    <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST">
-                      {% csrf_token %}
-                      <input list="browsers" name="browser" id="ingre_name">
-                      <datalist id="browsers">
-                        {% for item in query_results %}
-                          <option value="{{ item }}">
-                        {% endfor %}
-                      </datalist>
-                    <br>
-                    <button class="btn btn-primary top-buffer" id="ingredient_search" type="submit" style="font-family: 'Open Sans', sans-serif;" onclick="document.getElementById('ingre_name').click();">Search</button>
-                    </form>
 
-                </div>
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg" style="background:#028090">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Sense an Ingredient</h2>
+
         </div>
-    </div>
-    </div>
+
+        <div class="row d-md-flex justify-content-md-center features">
+
+          <div class="col-xl-3 col-md-6 align-items-stretch mt-4 mt-xl-0" id="fadeshow1">
+            <img src="/static/assets/img/ingredient search.png"></img>
+          </div>
+
+
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-camera"></i></div>
+              <h4><a href="">Using Camera</a></h4>
+              <p>Not sure what to find? Place the product upright with the ingredients visible to capture an image.</p>
+              <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST" id="image_form">
+                {% csrf_token %}
+                {{ uploadform }}
+                <div class="d-block iphone-mockup" style="padding-top:10px">
+                  <p class="btn-get-started pointer" style="text-align:center;" value="" onclick="document.getElementById('file').click();">Click/Upload Image</p>
+                </div>
+                <img id="output"/ width="100%" height="100%">
+                <div style="padding-top:10px">
+                <center><button class="btn-get-started" id="snap" type="submit" style="" value="Submit">Submit</button></center>
+              </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-info-circle"></i></div>
+              <h4><a href="">Ingredient Input</a></h4>
+              <p>Know what the ingredient is? Simply search using the text box given below.</p>
+              <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST">
+                {% csrf_token %}
+                <input list="browsers" name="browser" id="ingre_name">
+                <datalist id="browsers">
+                  {% for item in query_results %}
+                    <option value="{{ item }}">
+                  {% endfor %}
+                </datalist>
+              <br>
+              <center><button class="btn-get-started" id="ingredient_search" type="submit" style="" onclick="document.getElementById('ingre_name').click();">Search</button></center>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+  </main><!-- End #main -->
+
     <div id="footer"></div>
 
-    <script src="{% static "js/Header-Blue--Sticky-Header--Smooth-Scroll-1.js"%}"></script>
-    <script src="{% static "Header-Blue--Sticky-Header--Smooth-Scroll.js"%}"></script>
-    <script src="{% static "js/jquery.min.js"%}"></script>
-    <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
-    <script src="{% static "js/bs-init.js"%}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-    <script src="{% static "js/3D_CSS_PROGRESS_BAR_BY_REDSTAPLER.js"%}"></script>
-    <script src="{% static "js/Paralax-Box.js"%}"></script>
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static "assets/vendor/jquery/jquery.min.js"%}"></script>
+    <script src="{% static "assets/vendor/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
+    <script src="{% static "assets/vendor/jquery.easing/jquery.easing.min.js"%}"></script>
+    <script src="{% static "assets/vendor/php-email-form/validate.js"%}"></script>
+    <script src="{% static "assets/vendor/waypoints/jquery.waypoints.min.js"%}"></script>
+    <script src="{% static "assets/vendor/isotope-layout/isotope.pkgd.min.js"%}"></script>
+    <script src="{% static "assets/vendor/venobox/venobox.min.js"%}"></script>
+    <script src="{% static "assets/vendor/owl.carousel/owl.carousel.min.js"%}"></script>
+    <script src="{% static "assets/vendor/aos/aos.js"%}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static "assets/js/main home.js"%}"></script>
 
 </body>
 

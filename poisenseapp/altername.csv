@@ -1,0 +1,267 @@
+milk,cheese
+milk,cream
+milk,butter
+milk,ghee
+milk,yogurt
+milk,casein
+milk,caseinate
+milk,whey
+milk,lactalbumin
+milk,sherbet
+milk,margarine
+milk,milk derivative
+milk,milk powder
+milk,milk protein
+milk,milk solids
+milk,skim milk
+milk,skim milk solids
+milk,sour cream
+milk,evaporated milk
+milk,fat-free milk
+milk,butter oil
+milk,butter fat
+milk,hydrolysates
+milk,ice cream
+milk,kefir 
+milk,lactoglobulin
+milk,lactose-free milk
+milk,low fat milk
+milk,malted milk
+milk,milk
+milk,custard
+milk,eggnog
+milk,αs1-casein
+milk,αs2-casein
+milk,κ-casein
+milk,α-lactalbumin 
+milk,pudding 
+milk,galactose
+milk,lactose
+milk,a2 milk
+milk,buttermilk
+milk,cheese powder
+milk,condensed milk
+milk,cottage cheese
+milk,dairy solids
+milk,dried milk
+milk,dried milk solids
+milk,acidophilus milk
+milk,cultured milk
+milk,β-lactoglobulin
+soy,edamame
+soy,bean curd
+soy,hydrolyzed plant protein
+soy,miso
+soy,natto
+soy,okara
+soy,shoyu sauce
+soy,soy
+soy,glycine max
+soy,soy albumin
+soy,soy fiber
+soy,soy flour
+soy,soy grits
+soy,soy nuts
+soy,soy sprouts
+soy,soybean
+soy,soybean butter
+soy,soybean margarine
+soy,soy potein
+soy,soy milk
+soy,tamari
+soy,teriyaki sauce 
+soy,tempeh
+soy,textured vegetable potein
+soy,tofu
+soy,fruit wax
+soy,vegetable starch
+soy,mono- and diglyceride 
+soy,monosodium glutamate
+soy,soy lecithin
+soy,diprivan
+soy,propoven
+tree nut,almond
+tree nut,almond paste
+tree nut,nut flavoured alcoholic liqueurs and syrups
+tree nut,"nut paste, butter or spreads "
+tree nut,almond meal 
+tree nut,artificial nuts
+tree nut,beer nuts
+tree nut,carponata
+tree nut,hickory nuts
+tree nut,macaroons
+tree nut,natural nut extract
+tree nut,non-gai nuts
+tree nut,baklava
+tree nut,barbecue sauce
+tree nut,brazil nut
+tree nut,cashew
+tree nut,chestnut
+tree nut,filbert
+tree nut,flavored coffee
+tree nut,gianduja
+tree nut,granola bars
+tree nut,hazelnut
+tree nut,macadamia nut
+tree nut,marinade
+tree nut,marzipan
+tree nut,mortadella
+tree nut,nougat
+tree nut,nutella
+tree nut,pecan
+tree nut,pesto
+tree nut,pistachio
+tree nut,praline
+tree nut,shea nut
+tree nut,turron
+tree nut,walnut
+wheat,albumin
+wheat,atta flour
+wheat,bulgar
+wheat,burghul
+wheat,couscous
+wheat,cracker meal
+wheat,durum
+wheat,farina
+wheat,kamut
+wheat,matzoh
+wheat,seitan
+wheat,semolina
+wheat,spelt
+wheat,tabouleh
+wheat,triticale
+wheat,wheat
+wheat,wheat flour
+wheat,wheat germ
+wheat,wheat meal
+wheat,wheat starch
+wheat,wheat  berries
+wheat,wheat bran
+wheat,graham flour
+wheat,gelatinized starch
+wheat,globulin
+wheat,glutelin
+wheat,gluten
+wheat,hoisin sauce
+wheat,hydrolyzed vegetable protein
+wheat,modified food starch
+wheat,natural flavoring
+wheat,prolamin
+wheat,soy bean paste
+wheat,soy sauce
+wheat,specifically beta-glucan
+wheat,starch
+wheat,vegetable gum
+wheat,vegetable starch
+egg,albumin
+egg,alpha-livetin
+egg,apovitellin
+egg,dried egg solids
+egg,egg white
+egg,egg yolk
+egg,eggnog
+egg,livetin
+egg,lysozyme
+egg,mayonnaise
+egg,meringue
+egg,meringue powder
+egg,ovalbumin
+egg,ovoglobulin
+egg,ovomucin
+egg,ovomucoid
+egg,ovotransferrin
+egg,ovovitelia
+egg,ovovitellin
+egg,powdered egg
+egg,silici albuminate
+egg,simplesse
+egg,vitellin
+fish,anchovies
+fish,cod 
+fish,barramundi bream
+fish,eel 
+fish,flake
+fish,haddock
+fish,hake
+fish,halibut
+fish,mackerel
+fish,orange roughy (deep sea perch) 
+fish,flathead
+fish,pike 
+fish,flounder
+fish,sardines
+fish,garfish
+fish,perch
+fish,pilchards
+fish,salmon
+fish,shark
+fish,snapper
+fish,sole
+fish,trout
+fish,tuna
+fish,whiting
+fish,whitebait
+peanut,arachis oil
+peanut,monkey nuts 
+peanut,peanut flour
+peanut,peanut oil
+peanut,peanut sauce
+peanut,peanut sprouts
+peanut,satay
+peanut,renflakes 
+peanut,beer nuts
+peanut,goober nuts
+peanut,nutmeat 
+peanut,nu-nuts 
+peanut,groundnuts
+peanut,madelonas
+peanut,peanut butter 
+peanut,peanut 
+peanut,mixed nuts 
+peanut,peanut brittle 
+sesame,anjonoli
+sesame,aqua libra
+sesame,benne
+sesame,benniseed
+sesame,gingelly seeds
+sesame,gomasio
+sesame,sesame salt
+sesame,halvah
+sesame,hummus
+sesame,pasteli
+sesame,sesame
+sesame,sesame oil
+sesame,sesame seed
+sesame,sesame snacks
+sesame,sesarmol
+sesame,sesomolina
+sesame,sim sim
+sesame,tahina 
+sesame,sesame paste
+sesame,tahini
+sesame,til
+sesame,teel
+shellfish,abalone 
+shellfish,balmain bugs
+shellfish,lobster
+shellfish,barnacles
+shellfish,calamari
+shellfish,molluscs
+shellfish,clams
+shellfish,moreton bay bugs
+shellfish,cuttlefish
+shellfish,crab
+shellfish,octopus
+shellfish,marron
+shellfish,prawns
+shellfish,cockles
+shellfish,mussels 
+shellfish,oysters
+shellfish,crayfish
+shellfish,scallops
+shellfish,scampi
+shellfish,sea snails
+shellfish,shrimp
+shellfish,snails
+shellfish,squid
+shellfish,yabbies

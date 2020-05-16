@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'Core Circus';
+	src: url(../../assets/fonts/CoreCircus.eot) format('embedded-opentype'),
+	url(../../assets/fonts/CoreCircus.eot) format('embedded-opentype'),
+	url(../../assets/fonts/CoreCircus.woff) format('woff'),
+	url(../../assets/fonts/CoreCircus.ttf) format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

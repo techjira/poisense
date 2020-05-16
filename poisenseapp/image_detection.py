@@ -23,7 +23,7 @@ def read_text(img):
     url_api = "https://api.ocr.space/parse/image"
     _, compressedimage = cv2.imencode(".jpg", img, [1, 90])
     file_bytes = io.BytesIO(compressedimage)
-    apikey = "a8fce43d5888957"
+    apikey = "66ecf22d2d88957"
     result = requests.post(url_api,
                  files = {"image.jpg": file_bytes},
                  data = {"apikey": apikey ,
@@ -40,10 +40,10 @@ def read_text(img):
         text_detected = parsed_results.get("ParsedText")
         print(1)
     except:
-        apikey = "66ecf22d2d88957"
+        apikey2 = "a8fce43d5888957"
         result = requests.post(url_api,
                      files = {"image.jpg": file_bytes},
-                     data = {"apikey": apikey ,
+                     data = {"apikey": apikey2 ,
                              "OCREngine":"1",
                              "detectOrientation":"True",
                              "scale":"True",
@@ -62,20 +62,20 @@ def read_text(img):
 
     text_detected = text_detected.lower()
     text_detected = re.sub(r'\r\n', ' ',text_detected)
-    text_detected = re.sub(r'\n', ' ',text_detected)
-    text_detected = re.sub(r'[0-9]','',text_detected)
-    text_detected = re.sub(r'%','',text_detected)
+    text_detected = re.sub(r'[%\*\n]','',text_detected)
     text_detected = re.sub(r'w/v','',text_detected)
     text_detected = re.findall(r'[li]ngredient[s]?:?(.*?)[\.\?]',text_detected)
 
     if len(text_detected) > 1:
         text_detected = ",".join(text_detected)
-    elif text_detected == []:
+        text_detected = text_detected.split(",")
+    elif text_detected == [] or text_detected == [""] or text_detected == [" "]:
         text_detected = ""
     else:
         text_detected = text_detected[0]
+        text_detected = text_detected.split(",")
 
-    text_detected = text_detected.split(",")
+    print(text_detected)
     return text_detected
 
 # the below code is used to process the image
@@ -97,5 +97,5 @@ def final_text(img):
     img = img_resize(img)
     text = read_text(img)
     if text == "":
-        text = "ingredients not detected"
+        text = ["not detected"]
     return text

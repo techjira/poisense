@@ -16,17 +16,46 @@ import re
 import sys
 import os
 import time
-
+import pubchempy
 # to check db if the elements detected are in the database and put them onto a new list called found_list
 def check_db(text):
     found_list = []
+    compound_names = []
     for each in text:
-        try:
-            if each == Hazardchemicals.objects.get(chemical_name__iexact=each).chemical_name:
-                found_list.append(each)
-        except:
+        print("loop", each)
+        # each = re.sub("[\(.*?[\)]", "", each)
+        ignore_list = ['aqua','water','glycerin','glycerine','fragrance','preservative','colour','soap','sodium salicylate','sodium chloride','sodium citrate','xanthan','sodium lauroyl sacrcosinate','cetyl acetate','cocamidopropyl betaine','cetearyl alcohol','cl 2-15 alkyl benzoate','triethanolamine','glyceryl stearate','steareth-2','propylparaben','methylparaben','dimethicone','caprylyl glycol','cetyl palmitate','tocopheryl acetate']
+        if each in ignore_list:
+            print("ignoring", each)
+            pass
+        else:
+            try:
+                if (Hazardchemicals.objects.filter(chemical_name__iexact=each)).count()>=1:
+                    found_list.append(each)
+                    compound_names.append(each)
+
+                else:
+                    val = pubchempy.get_synonyms(each, 'name')[0]
+                    val = val['Synonym']
+                    print("seaching in Synonym")
+                    count = 0
+                    for i in val:
+                        count = count+1
+                        i = i.lower()
+                        if (Hazardchemicals.objects.filter(chemical_name__iexact=i)).count()>=1:
+                            i = re.sub("'","\'",i)
+                            found_list.append(i)
+                            compound_names.append(each)
+                            break
+                        if count == 150:
+                            break
+                print("hazards")
+                print(found_list)
+                print(compound_names)
+            except:
                 pass
-    return found_list
+
+    return found_list, compound_names
 
 # to extract the statements of prevention, response, storage
 def value_extraction(x):
@@ -126,13 +155,13 @@ def human_senses(id,statement):
 # the database.
 def retrieving(text):
     print(text)
-    found_list = check_db(text)
-    print(found_list)
-    if len(found_list) == 1:
-        element_names = found_list[0]
+    found_list, compound_names = check_db(text)
+    print(compound_names)
+    if len(compound_names) == 1:
+        element_names = compound_names[0]
         element_names = element_names.capitalize()
-    elif len(found_list)>1:
-        element_names = [x.capitalize() for x in found_list]
+    elif len(compound_names)>1:
+        element_names = [x.capitalize() for x in compound_names]
         element_names = ', '.join(element_names)
         element_names = re.sub(r"(\b, \b)(?!.*\1)", r" and ", element_names)
     else:
@@ -147,18 +176,20 @@ def retrieving(text):
     hazard_statement = []
     for each in found_list:
         # getting the hazard statement codes
-        HSC = (Hazardchemicals.objects.get(chemical_name__iexact=each).hazardstatementcode).split('; ')
+        print(each)
+        HSC = (Hazardchemicals.objects.filter(chemical_name__iexact=each).first().hazardstatementcode).split('; ')
         HSC = [x for x in HSC if not x.startswith('A')]
+        # HSC = [x for x in HSC if not len(x)==4]
         HazardStatementCode = HazardStatementCode + HSC
-
+        print(HazardStatementCode)
         # getting the GHS codes
-        ghsc = (Hazardchemicals.objects.get(chemical_name__iexact=each).ghs_code).split('; ')
+        ghsc = (Hazardchemicals.objects.filter(chemical_name__iexact=each).first().ghs_code).split('; ')
         while("" in ghsc) :
             ghsc.remove("")
         ghs_code = ghs_code + ghsc
 
         # getting the hazard statements
-        hazard_statement = hazard_statement + (Hazardchemicals.objects.get(chemical_name__iexact=each).hazard_statement).split('; ')
+        hazard_statement = hazard_statement + (Hazardchemicals.objects.filter(chemical_name__iexact=each).first().hazard_statement).split('; ')
     HazardStatementCode = list(set(HazardStatementCode))
     ghs_code = list(set(ghs_code))
 

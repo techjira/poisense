@@ -1,26 +1,46 @@
-<div class="footer-dark">
-    <footer>
-        <div class="container">
-            <div class="row d-sm-flex justify-content-sm-center">
-                <div class="col-sm-6 col-md-3 item">
-                    <h3>Services</h3>
-                    <ul>
-                        <li style="font-family: 'Open Sans', sans-serif;"><a href="{% url 'sense' %}">Sense an ingredient</a></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="col-md-6 item text">
-                    <h3 style="font-family: 'Open Sans', sans-serif;">Feedbacks?</h3>
-                    <p style="font-family: 'Open Sans', sans-serif;">The sole purpose of the application is to keep your household safe from harmful products. Feedback could help us to make close the gap to the above objective. Feel free to message us in the social media links.</p>
-                </div>
-                <div class="col item social">
-                  <a href="#"><i class="icon ion-social-facebook"></i></a>
-                  <a href="#"><i class="icon ion-social-twitter"></i></a>
-                  <a href="https://www.instagram.com/poisense.tech/"><i class="icon ion-social-instagram"></i></a>
-                </div>
-            </div>
-            <p class="copyright" style="font-family: 'Open Sans', sans-serif;">Poisense © 2020</p>
+<div class="footer-top">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-3 col-md-6 footer-contact">
+        <h3>Poisense</h3>
+        <p>
+
+          <strong style="color:black">Email:</strong><a href="mailto:someone@example.com" style="color:black">admin@poisense.tech</a><br>
+        </p>
+      </div>
+
+      <div class="col-lg-3 col-md-6 footer-links">
+        <h4> Feedbacks?</h4>
+
+        <p align="justify">The sole purpose of the application is to keep your household safe from harmful products. Feedback could help us to make close the gap to the above objective. Feel free to message us in the social media links.</p>
+
+      </div>
+
+      <div class="col-lg-3 col-md-6 footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><i class="bx bx-chevron-right"></i> <a href="{% url 'homepage' %}">Home</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="{% url 'sense' %}">Sense an Ingredient</a></li>
+          <li><i class="bx bx-chevron-right"></i> <a href="{% url 'allergy-detection' %}">Food Sense</a></li>
+
+
+        </ul>
+      </div>
+
+
+
+      <div class="col-lg-3 col-md-6 footer-links">
+        <h4>Our Social Networks</h4>
+
+        <div class="social-links mt-3">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+
         </div>
-    </footer>
+      </div>
+
+    </div>
+  </div>
 </div>

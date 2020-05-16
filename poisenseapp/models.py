@@ -41,6 +41,16 @@ class Precautionstm(models.Model):
         db_table = 'PrecautionStm'
 
 
+class Altername(models.Model):
+    category = models.CharField(primary_key=True, max_length=255)
+    alternativeingredient = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'altername'
+        unique_together = (('category', 'alternativeingredient'),)
+
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -151,24 +161,20 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class Handling(models.Model):
-    f1 = models.IntegerField(blank=True, null=True)
-    hazclass_t_toxic_f_flam_r_reactive_c_corrosive = models.IntegerField(db_column='HazClass_T=Toxic_F=Flam_R=Reactive_C=Corrosive', primary_key=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    inhalation = models.TextField(db_column='Inhalation', blank=True, null=True)  # Field name made lowercase.
-    skin_contact = models.TextField(db_column='Skin_contact', blank=True, null=True)  # Field name made lowercase.
-    eye_contact = models.TextField(db_column='Eye_contact', blank=True, null=True)  # Field name made lowercase.
-    ingestion = models.TextField(db_column='Ingestion', blank=True, null=True)  # Field name made lowercase.
+class Foodcontain(models.Model):
+    allergycategory = models.CharField(primary_key=True, max_length=255)
+    food_contains = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'handling'
+        db_table = 'foodcontain'
 
 
-class Precautions(models.Model):
-    f1 = models.CharField(max_length=255, blank=True, null=True)
-    hazclass_t_toxic_f_flam_r_reactive_c_corrosive = models.IntegerField(db_column='HazClass_T=Toxic_F=Flam_R=Reactive_C=Corrosive', primary_key=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    precautions = models.TextField(db_column='Precautions', blank=True, null=True)  # Field name made lowercase.
+class Signandtreatment(models.Model):
+    categories = models.CharField(primary_key=True, max_length=255)
+    symptoms = models.CharField(max_length=255)
+    treatments = models.CharField(max_length=255)
 
     class Meta:
         managed = False
-        db_table = 'precautions'
+        db_table = 'signandtreatment'

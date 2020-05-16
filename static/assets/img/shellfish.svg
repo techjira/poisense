@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="32" height="32" viewBox="0 0 32 32.000001" id="svg2" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="oyster-shell-food-marine-sea-aquatic.svg">
+  <defs id="defs4">
+    <inkscape:path-effect effect="fillet-chamfer" id="path-effect25375-5-3-9" is_visible="true" fillet_chamfer_values="0,0 | -0.75000045,1 | -0.75,1" method="auto" radius="0.75" chamfer_steps="1" helper_size="0" flexible="false" use_knot_distance="false" ignore_radius_0="false" only_selected="true" hide_knots="false"/>
+    <inkscape:path-effect effect="fillet-chamfer" id="path-effect20967-7-6-4" is_visible="true" fillet_chamfer_values="0,0 | -0.50127826,1" method="auto" radius="2" chamfer_steps="1" helper_size="0" flexible="false" use_knot_distance="false" ignore_radius_0="false" only_selected="true" hide_knots="false"/>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="11.313709" inkscape:cx="13.175133" inkscape:cy="7.7865514" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="false" units="px" inkscape:window-width="1366" inkscape:window-height="716" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" showguides="true" inkscape:guide-bbox="true"/>
+  
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(0,-1020.3622)">
+    <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 5.2075816,1036.8658 c 3.4844977,6.0016 5.9945574,8.5328 9.5101604,11.9808 0.710287,0.6966 2.285934,0.6784 3.013418,0 3.581971,-3.3405 6.517493,-6.2979 9.379086,-11.9808 1.620473,-3.2181 2.674508,-6.7367 -1.845618,-10.6772 -4.642961,-4.0477 -15.150842,-3.6274 -19.0848385,0.4926 -3.4646552,3.9359 -3.3270426,6.1288 -0.9722079,10.1846 z" id="path17730-4-5" inkscape:connector-curvature="0" sodipodi:nodetypes="ssssscs"/>
+    <path id="path17732-9-9" d="m 22.005012,1043.8626 a 15.499999,12.500007 0 0 0 -12.0100917,-0.048" style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" inkscape:connector-curvature="0"/>
+    <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 14.99962,1042.8623 -1.499982,-19" id="path17734-9-2" inkscape:connector-curvature="0" sodipodi:nodetypes="cc"/>
+    <path sodipodi:nodetypes="cc" inkscape:connector-curvature="0" id="path17736-1-8" d="m 17.079342,1042.8623 1.500019,-19" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"/>
+    <path sodipodi:nodetypes="cac" inkscape:connector-curvature="0" id="path17738-8-2" d="m 13.026404,1042.7014 c 0,0 -1.885682,-5.5461 -2.539805,-8.3949 -0.708737,-3.0869 -1.4907969,-9.3825 -1.4907969,-9.3825" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"/>
+    <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 11.55938,1043.625 c 0,0 -2.6511495,-4.9156 -3.5473511,-7.5447 -1.0068284,-2.9534 -2.0189859,-9.1372 -2.0189859,-9.1372" id="path17740-7-2" inkscape:connector-curvature="0" sodipodi:nodetypes="cac"/>
+    <path inkscape:connector-curvature="0" id="path17742-5-7" d="m 18.539865,1048.364 4.385159,-0.3542 c 0.911736,-0.083 1.630489,-0.8131 1.700712,-1.7275 l 0.375307,-5.3852" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" sodipodi:nodetypes="cccc"/>
+    <path sodipodi:nodetypes="cccc" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" d="m 13.959607,1048.364 -4.3851214,-0.3542 c -0.9117354,-0.083 -1.630526,-0.8131 -1.7007118,-1.7275 l -0.3753071,-5.3852" id="path17744-8-8" inkscape:connector-curvature="0"/>
+    <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000012px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 18.972999,1042.7014 c 0,0 1.88572,-5.5461 2.539805,-8.3949 0.708775,-3.0869 1.490797,-9.3825 1.490797,-9.3825" id="path17746-5-0" inkscape:connector-curvature="0" sodipodi:nodetypes="cac"/>
+    <path sodipodi:nodetypes="cac" inkscape:connector-curvature="0" id="path17748-1-9" d="m 20.440061,1043.625 c 0,0 2.651149,-4.9156 3.547351,-7.5447 1.006828,-2.9534 2.018948,-9.1372 2.018948,-9.1372" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"/>
+  </g>
+
+	<metadata>
+		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+			<rdf:Description about="https://iconscout.com/legal#licenses" dc:title="oyster-shell-food-marine-sea-aquatic" dc:description="oyster-shell-food-marine-sea-aquatic" dc:publisher="Iconscout" dc:date="2017-06-27" dc:format="image/svg+xml" dc:language="en">
+				<dc:creator>
+					<rdf:Bag>
+						<rdf:li>Vignesh Oviyan</rdf:li>
+					</rdf:Bag>
+				</dc:creator>
+			</rdf:Description>
+		</rdf:RDF>
+    </metadata></svg>

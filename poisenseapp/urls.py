@@ -12,11 +12,11 @@ path('footer', footer, name='footer'),
 path('', password, name='password'),
 path('sense/', sense, name='sense'),
 path('home/', home, name='homepage'),
-#path('info/', sense, name='ingredient_information'),
+path('allergy-detection/', allergy, name='allergy-detection'),
 path('info/',sense , name='info'),
-path('safe/',sense , name='safe'),
-path('.well-known/acme-challenge/YWObyQs8K90gboL2UYaiKB6_k2emxhUuG-mZQ7yOg4c',ssl , name='.well-known/acme-challenge/YWObyQs8K90gboL2UYaiKB6_k2emxhUuG-mZQ7yOg4c'),
-path('.well-known/acme-challenge/51_a9PO7gke53ZMZV0kbWLwiLIAn9xM2gsPFEaQS2j0',ssl2 , name='.well-known/acme-challenge/51_a9PO7gke53ZMZV0kbWLwiLIAn9xM2gsPFEaQS2j0'),
+path('allergy-info/', allergy, name='allergy-info'),
+# path('.well-known/acme-challenge/YWObyQs8K90gboL2UYaiKB6_k2emxhUuG-mZQ7yOg4c',ssl , name='.well-known/acme-challenge/YWObyQs8K90gboL2UYaiKB6_k2emxhUuG-mZQ7yOg4c'),
+# path('.well-known/acme-challenge/51_a9PO7gke53ZMZV0kbWLwiLIAn9xM2gsPFEaQS2j0',ssl2 , name='.well-known/acme-challenge/51_a9PO7gke53ZMZV0kbWLwiLIAn9xM2gsPFEaQS2j0'),
 ]
 
 if settings.DEBUG:

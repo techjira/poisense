@@ -33,7 +33,7 @@ SECRET_KEY = '&xj#s9q2#lw5ohn=8f0g$*&mq6f30&k!-$=!&-#sm%t-9(^=dl'
 DEBUG = True
 
 # secure ssl
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
 ALLOWED_HOSTS = [
     'poisense.tech',
