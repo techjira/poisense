@@ -1,6 +1,6 @@
 # Poisense
 
-Poisense helps to identify the hazardous and poisonous ingredients in the home so that you and your loved ones could be safe
+Poisense, a web application to detect hazardous chemicals in the household products and potential food allergens in the food products, helping the households have a safer and better life.
 
 ## Link
 
@@ -54,5 +54,8 @@ git push heroku master
 * [Django](https://www.djangoproject.com/) - The web framework used
 * [Heroku](https://www.heroku.com/) - Hosting
 * [Bootstrap](https://getbootstrap.com/) - UI Design
+* [OCR Space API](https://ocr.space/) - Text Detection
+* [PostGreSQL](https://www.postgresql.org/) - Relational Database
+
 
 
