@@ -38,7 +38,7 @@ def read_text(img):
     try:
         parsed_results = result.get("ParsedResults")[0]
         text_detected = parsed_results.get("ParsedText")
-        print(1)
+        # print(1)
     except:
         apikey2 = "a8fce43d5888957"
         result = requests.post(url_api,
@@ -54,11 +54,11 @@ def read_text(img):
         try:
             parsed_results = result.get("ParsedResults")[0]
             text_detected = parsed_results.get("ParsedText")
-            print(2)
+            # print(2)
         except:
             text_detected =""
-            print(3)
-    print(text_detected)
+            # print(3)
+    # print(text_detected)
     return text_detected
 
 # the below code is used to process the image

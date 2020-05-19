@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from . import forms
 from django.http import HttpResponse
@@ -7,7 +8,7 @@ from .forms import UploadFileForm, ChemForm, UploadAllergyFileForm
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from poisenseapp.database_extract import retrieving
-from poisenseapp.allergy_database_extract import allergy_retrieving
+from poisenseapp.allergy_database_extract import allergy_retrieving, personalised
 from poisenseapp.image_detection import final_text
 from poisenseapp.models import Hazardchemicals, Pictogramcode, Precautionstm
 import cv2
@@ -23,6 +24,12 @@ import random
 import string
 from pubchempy import get_compounds
 import poisenseapp.allergy_image_detection as aid
+
+from . import models
+from . import forms
+import hashlib
+import re
+from poisenseapp.models import User, UserAllergyinfo
 
 # used to first call the password page
 def password(request):
@@ -54,7 +61,7 @@ def randomString(stringLength=8):
 
 # complete functionality of the app is in this function
 def allergy(request):
-
+    userid = request.session.get('user_id')
     fs = FileSystemStorage()
     if request.method == 'POST':
         Allergyuploadform = UploadAllergyFileForm(request.POST,request.FILES)
@@ -67,12 +74,21 @@ def allergy(request):
                 text = aid.final_text(str(uploaded_file_url)[1:])
                 fs.delete(filename)
                 print(text)
-                found_allergies = allergy_retrieving(text)
+                found_allergies,found_allergies_list = allergy_retrieving(text)
+                personal = personalised(text,userid,found_allergies_list)
+                print(personal)
+                print(bool(found_allergies))
+                print(found_allergies_list)
                 if found_allergies == "not detected":
-                    return render(request, 'allergy_not_detected.html')
+                    if not bool(personal):
+                        return render(request, 'allergy_not_detected.html')
                 elif not bool(found_allergies):
-                    return render(request, 'allergy_safe.html')
-                return render(request, 'allergy-info.html', {'found_allergies': found_allergies})
+                    if not bool(personal):
+                        return render(request, 'allergy_safe.html')
+                elif not bool(found_allergies_list):
+                    if not bool(personal):
+                        return render(request, 'allergy_safe.html')
+                return render(request, 'allergy-info.html', {'found_allergies': found_allergies,'personal':personal})
     else:
         Allergyuploadform = UploadAllergyFileForm()
     return render(request, 'allergy-detection.html', {'Allergyuploadform': Allergyuploadform})
@@ -113,9 +129,8 @@ def sense(request):
 
         # if no ingredients gets detected then safe.html is displayed
         if element_names == "NO ELEMENT FOUND":
-            uploadform = UploadFileForm()
-            input_form = ChemForm()
-            return render(request, 'safe.html', {'uploadform': uploadform,'input_form':input_form})
+            count_text = len(text)
+            return render(request, 'safe.html', {'count_text':count_text})
 
         return render(request, 'info.html', {
             'element_names':element_names,'hs_eye':hs_eye,'hs_skin':hs_skin,'hs_inhale':hs_inhale,'hs_ingestion':hs_ingestion,'hs_other':hs_other,'ghs_code':ghs_code,'prevention':prevention,'rs_eye':rs_eye,'rs_skin':rs_skin,'rs_inhale':rs_inhale,'rs_ingestion':rs_ingestion,'rs_other':rs_other,'storage':storage,'ghs_dict':ghs_dict})
@@ -124,3 +139,192 @@ def sense(request):
         input_form = ChemForm()
 
     return render(request, 'sense.html', {'uploadform': uploadform,'input_form':input_form,'query_results':query_results})
+
+# add your kid's allergic information
+def addInfo(request,id=0):
+    list1 = []
+    list2 = []
+    if not request.session.get('is_login', None):
+        return redirect('/login/')
+    if request.method == 'POST':
+        #id = 0 means creating the kids
+        if id == 0:
+            info_form = forms.AllergyInfoForm(request.POST)
+
+        #update the kid's information
+        else:
+            #find and connect the kid instance using pk
+            kid = models.UserAllergyinfo.objects.get(pk=id)
+            info_form = forms.AllergyInfoForm(request.POST,instance=kid)
+            if info_form.is_valid():
+                kid_allergy = info_form.cleaned_data.get('kid_allergy')
+                # clean the kid_allergy data
+                if (kid_allergy):
+                    for ele in kid_allergy:
+                        list1.append(ele.allergycategory)
+                        allergylist = ','.join(list1)
+
+                    kid.kid_allergy = allergylist
+                else:
+                    kid.kid_allergy = "no allergy selected"
+
+                info_form.save()
+                return redirect('/index/')
+
+        if info_form.is_valid():
+            userid = request.session.get('user_id')
+            # count the number of kids
+            kid_no = models.UserAllergyinfo.objects.filter(userid=request.session.get('user_id')).count()
+            if kid_no == None:
+                kid_no = 1
+            else:
+                kid_no = kid_no + 1
+            kid_id = kid_no
+            kid_name = info_form.cleaned_data.get('kid_name')
+            kid_allergy = info_form.cleaned_data.get('kid_allergy')
+            personalised_allergy = info_form.cleaned_data.get('personalised_allergy')
+            # create a new kid instance
+            new_kid = models.UserAllergyinfo()
+            new_kid.userid = userid
+            new_kid.kid_id = kid_id
+            new_kid.kid_name = kid_name
+            # clean the kid_allergy data
+            if (kid_allergy):
+                for ele in kid_allergy:
+                    list1.append(ele.allergycategory)
+                    allergylist = ','.join(list1)
+
+                new_kid.kid_allergy = allergylist
+            else:
+                new_kid.kid_allergy = "no allergy selected"
+
+            new_kid.personalised_allergy = personalised_allergy
+            new_kid.save()
+
+    else:
+        if id == 0:
+            info_form = forms.AllergyInfoForm()
+        else:
+            kid = models.UserAllergyinfo.objects.get(pk=id)
+            info_form = forms.AllergyInfoForm(instance=kid)
+        return render(request, 'login/addinfo.html', {'form':info_form})
+
+    return redirect('/index/')
+
+
+
+
+# index page show all the kids' allergy information
+def index(request):
+    context = {'kidinfo_list':models.UserAllergyinfo.objects.filter(userid=request.session.get('user_id'))}
+    return render(request, 'login/index.html',context)
+
+# User login
+def login(request):
+    obj_num = models.UserAllergyinfo.objects.filter(userid=request.session.get('user_id')).count()
+    # cannot login repeatly
+    if request.session.get('is_login', None):
+        if obj_num == 0:
+            return redirect('/firstLogin/')
+        else:
+            return redirect('/index/')
+
+    if request.method == 'POST':
+        login_form = forms.UserForm(request.POST)
+        message = 'Please ensure the content is valid！'
+        if login_form.is_valid():
+            username = login_form.cleaned_data.get('username')
+            password = login_form.cleaned_data.get('password')
+            # validate if the user existed
+            try:
+                user = models.User.objects.get(username=username)
+            except :
+                message = 'The user does not exist！'
+                return render(request, 'login/login.html', locals())
+
+            if user.password_hash == hash_code(password):
+                # use session to check user login status
+                request.session['is_login'] = True
+                request.session['user_id'] = user.id
+                request.session['user_name'] = user.username
+                kid_num = models.UserAllergyinfo.objects.filter(userid=user.id).count()
+                # check whether the account has kids or not
+                if kid_num == 0:
+                    return redirect('/firstLogin/')
+                else:
+                    return redirect('/index/')
+            else:
+                message = 'Invalid password！'
+                return render(request, 'login/login.html', locals())
+        else:
+            return render(request, 'login/login.html', locals())
+    login_form = forms.UserForm()
+    return render(request, 'login/login.html', locals())
+
+def register(request):
+    # if user logged in, redirect to the index page
+    if request.session.get('is_login', None):
+        return redirect('/index/',locals())
+
+    if request.method == 'POST':
+        register_form = forms.RegisterForm(request.POST)
+        message = "Please ensure the content is valid！"
+
+        if register_form.is_valid():
+            username = register_form.cleaned_data.get('username')
+            password1 = register_form.cleaned_data.get('password1')
+            password2 = register_form.cleaned_data.get('password2')
+            # validate the username and password
+            if password1 != password2:
+                message = 'The passwords do not match！'
+                return render(request, 'login/register.html', locals())
+            else:
+                same_name_user = models.User.objects.filter(username=username)
+                pattern = re.compile('[0-9]+')
+                match = pattern.findall(password1)
+                if same_name_user:
+                    message = 'The username already existed'
+                    return render(request, 'login/register.html', locals())
+
+                if  len(password1) < 8 or not match:
+                    message = 'Make sure the password is at least 8 characters and contains at least one number.'
+                    return render(request, 'login/register.html', locals())
+                # save new user
+                new_user = models.User()
+                new_user.username = username
+                new_user.password_hash = hash_code(password1)
+                new_user.save()
+                return redirect('/login/')
+
+        else:
+            return render(request, 'login/register.html', locals())
+
+    register_form = forms.RegisterForm()
+    return render(request, 'login/register.html', locals())
+
+# User logout
+def logout(request):
+    if not request.session.get('is_login', None):
+        # if not logged in, cannot log out
+        return redirect("/login/")
+    #delete the session
+    request.session.flush()
+    return redirect("/login/")
+
+# delete the kid
+def delete(reuqest,id):
+    kid = models.UserAllergyinfo.objects.get(pk=id)
+    kid.delete()
+    return redirect('/index')
+
+# hash the password
+def hash_code(s, salt='mysite'):
+    h = hashlib.sha256()
+    # add salt
+    s += salt
+    h.update(s.encode())
+    return h.hexdigest()
+
+# direct to firstLogin page if no kid in the account
+def firstLogin(request):
+    return render(request, "login/first account.html")

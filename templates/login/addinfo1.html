@@ -1,0 +1,31 @@
+
+{% extends "login/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>{{ request.session.user_name }}! welcome !</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.kid_name|as_crispy_field }}
+    {{ form.kid_allergy|as_crispy_field }}
+    <!-- <p>if you have multiple allergens, please seperate by comma</p> -->
+    {{ form.personalised_allergy|as_crispy_field }}
+
+    </br>
+
+    <div class="row">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                Submit</button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'list' %}" class="btn btn-secondary btn-block btn-lg">
+                <i class="fas fa-stream"></i> Back to list
+            </a>
+        </div>
+    </div>
+</form>
+<p>
+    <a href="/logout/">Log out</a>
+</p>
+{% endblock content %}

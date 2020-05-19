@@ -41,6 +41,39 @@ class Precautionstm(models.Model):
         db_table = 'PrecautionStm'
 
 
+class User(models.Model):
+    username = models.CharField(max_length=100)
+    password_hash = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'User'
+
+
+
+
+class UserAllergyinfo(models.Model):
+    # kid_id = models.AutoField(primary_key=True)
+    kid_id = models.IntegerField()
+    userid = models.IntegerField()
+    kid_name = models.CharField(max_length=80)
+    kid_allergy = models.TextField(blank=True, null=True)
+    personalised_allergy = models.CharField(max_length=150, blank=True, null=True)
+
+    def kid_allergy_as_list(self):
+        if(self.kid_allergy):
+            return self.kid_allergy.split(',')
+    
+    def personalised_allergy_as_list(self):
+        if(self.personalised_allergy):
+            return self.personalised_allergy.split(',')
+
+    class Meta:
+        managed = True
+        db_table = 'User_allergyInfo'
+        unique_together = (('kid_id', 'userid'),)
+
+
 class Altername(models.Model):
     category = models.CharField(primary_key=True, max_length=255)
     alternativeingredient = models.CharField(max_length=255)
@@ -168,6 +201,21 @@ class Foodcontain(models.Model):
     class Meta:
         managed = False
         db_table = 'foodcontain'
+    
+    def __str__(self):
+        return self.allergycategory
+
+
+class LogappUser(models.Model):
+    name = models.CharField(unique=True, max_length=128)
+    password = models.CharField(max_length=256)
+    email = models.CharField(unique=True, max_length=254)
+    sex = models.CharField(max_length=32)
+    c_time = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'logapp_user'
 
 
 class Signandtreatment(models.Model):

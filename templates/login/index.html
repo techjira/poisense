@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="/static/assets/img/icon.png" rel="icon">
+  <title>Poisense</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+
+  <!-- suqin -->
+  <link rel="stylesheet" href="{% static "vendor/bootstrap/css/bootstrap.min.css"%}">
+  <link rel="stylesheet" href="{% static "vendor/icofont/icofont.min.css"%}">
+  <link rel="stylesheet" href="{% static "vendor/boxicons/css/boxicons.min.css"%}">
+
+  <link rel="stylesheet" href="{% static "vendor/remixicon/remixicon.css"%}">
+  <link rel="stylesheet" href="{% static "vendor/venobox/venobox.css"%}">
+  <link rel="stylesheet" href="{% static "vendor/owl.carousel/assets/owl.carousel.min.css"%}">
+  <link rel="stylesheet" href="{% static "vendor/aos/aos.css"%}">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{% static "css/style home.css"%}">
+</head>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+<script>
+$(function(){
+  $("#header_file").load("{% url 'header' %}");
+  $("#footer").load("{% url 'footer' %}");
+});
+</script>
+
+<body>
+  <div id="header_file"></div>
+  <br>
+  <main id="main">
+
+    <!-- Modal form -->
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Change in Food Allergies</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5">
+              <i class="fas fa-envelope prefix grey-text"></i>
+              <label> Personalized Food Allergies </label>
+              <input type="text" id="p_allergies" class="form-control validate">
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-default">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Modal: modalConfirmDelete-->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio" style="background:#00A896">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Allergens</h2>
+          <p>Take a look at your kids food allergy</p>
+        </div>
+        <!-- suqin -->
+        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          {% for kid in kidinfo_list %}
+          <li data-filter=".{{ kid.id }}" style="text-transform:capitalize;">{{ kid.kid_name }}</li>
+          </br>
+          <li>
+            <form action="{% url 'delete' kid.id %}" method="post">
+              {% csrf_token %}
+              <a class="delete kid" href="{% url 'delete' kid.id %}" title="Delete the Kid">
+                <i class="ri-delete-bin-line" style="color:aliceblue"></i></a>
+            </form>
+          </li>
+          {% endfor%}
+        </ul>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          {% for kid in kidinfo_list %}
+
+          <!-- {% if kid.kid_allergy_as_list %} -->
+          {% for ele in kid.kid_allergy_as_list %}
+
+
+          {% ifequal ele "fish" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/fish.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Fish</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+
+          {% ifequal ele "egg" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/eggs.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Eggs</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+
+          {% ifequal ele "soy" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/soy.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Soy</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+
+          {% ifequal ele "milk" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/milk.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Milks</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+
+          {% ifequal ele "tree nut" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/tree nuts.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Tree Nut</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+
+          {% ifequal ele "sesame" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/sesame.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Sesame</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+
+          {% ifequal ele "shellfish" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/shellfish.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Shellfish</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+
+          {% ifequal ele "wheat" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/wheat.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Wheat</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+
+          {% ifequal ele "peanut" %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/peanuts.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Peanut</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endifequal %}
+          {% endfor %}
+          <!-- {% endif %} -->
+
+          <!-- {% if kid.personalised_allergy_as_list %} -->
+          {% for ele in kid.personalised_allergy_as_list %}
+          {% if ele %}
+          <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
+            <div class="portfolio-img"><img src="/static/img/personal.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>{{ ele }}</h4>
+              <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
+                  class="ri-pencil-line"></i></a>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          <!-- {% endif %} -->
+
+          {% endfor %}
+        </div>
+        <div style="text-align:right">
+          <a href="{% url 'insert' %}">
+            <input class="btn btn-primary btn-lg" type="submit" style="border:none; background:#05668D"
+              value="Add Kids" />
+          </a>
+        </div>
+      </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+  </main><!-- End #main -->
+
+  <div id="footer"></div>
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <!-- suqin -->
+  <script src="{% static "vendor/jquery/jquery.min.js"%}"></script>
+  <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
+  <script src="{% static "vendor/jquery.easing/jquery.easing.min.js"%}"></script>
+  <script src="{% static "vendor/php-email-form/validate.js"%}"></script>
+  <script src="{% static "vendor/waypoints/jquery.waypoints.min.js"%}"></script>
+  <script src="{% static "vendor/isotope-layout/isotope.pkgd.min.js"%}"></script>
+  <script src="{% static "vendor/venobox/venobox.min.js"%}"></script>
+  <script src="{% static "vendor/owl.carousel/owl.carousel.min.js"%}"></script>
+  <script src="{% static "vendor/aos/aos.js"%}"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="{% static "js/main home.js"%}"></script>
+
+</body>
+
+</html>

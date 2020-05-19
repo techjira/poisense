@@ -80,28 +80,39 @@
 <body>
 
     <div id="header_file"></div>
+    {% if personal %}
+    <section id="services" class="services section-bg" style="background:#028090">
+      <br>
+      <div class="container" data-aos="fade-up">
 
-    <!-- <div class="highlight-phone" style="background-color: #028090; height:450px;">
-        <div class="container">
-          <h2 class="text-center" style="margin-top:40px;">PERSONALIZED ALLERGIES DETECTED</h2>
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="intro">
-                      <h2></h2>
-                      <h2></h2>
-                      <h2>Mushrooms</h2>
-
-
-                        <p style="color: rgb(238,239,239);">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. Aliqua sed justo ligula.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="d-none d-md-block iphone-mockup"><img class="device" src="assets/img/sensitive-man.svg"></div>
-                </div>
-            </div>
+        <div class="section-title">
+          <h2>Personalized Food Allergies Detected</h2>
         </div>
-    </div> -->
-    <div class="team-clean" style="background-color: #B5B682;">
+
+        {% for key, values in personal.items %}
+        <h4><center>{{ key }}'s Food Allergies found</center></h4>
+        <br>
+        <div class="row d-xl-flex justify-content-center justify-content-xl-center">
+          {% for each in values %}
+          <div class="col-sm-6 col-md-5 col-lg-2 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box" style="width:160px; height:200px">
+              <center>
+              <img src="/static/assets/img/{{ each }}.svg"  alt=""
+       onerror="this.onerror=null; this.src='/static/assets/img/block.svg'" width="60px">
+              <!-- <div class="image"><img src="/static/assets/img/{{ each }}.svg" class="fit-image"></div> -->
+              <h4 style="text-transform: capitalize;">{{ each }}</h4>
+            </center>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+    {% if found_allergies %}
+    <div class="team-clean" style="background-color: #F0F3BD;">
       <br>
         <div class="container">
             <div class="intro">
@@ -112,13 +123,15 @@
             <div class="row d-xl-flex justify-content-xl-center people" data-aos="fade-up" data-aos-delay="150">
               {% for key, values in found_allergies.items %}
                 <div class="col-md-6 col-lg-4 item"><img class="" src="/static/assets/img/{{ key }}.svg" style="width: 100px;max-height: 199px;">
-                    <h3 class="name">{{ key }}</h3>
-                    <p class="title" style="color:white;">{{ values }}</p>
+                    <h3 class="name" style="text-transform: capitalize;">{{ key }}</h3>
+                    <p class="title" style="color:#001011;">{{ values }}</p>
                 </div>
               {% endfor %}
             </div>
         </div>
+
     </div>
+    {% endif %}
     <!-- <div class="social-icons">
         <p><strong>MAY CONTAIN TRACES OF&nbsp;</strong></p>
         <div class="row">

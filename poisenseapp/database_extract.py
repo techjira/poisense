@@ -22,11 +22,11 @@ def check_db(text):
     found_list = []
     compound_names = []
     for each in text:
-        print("loop", each)
+        # print("loop", each)
         # each = re.sub("[\(.*?[\)]", "", each)
-        ignore_list = ['aqua','water','glycerin','glycerine','fragrance','preservative','colour','soap','sodium salicylate','sodium chloride','sodium citrate','xanthan','sodium lauroyl sacrcosinate','cetyl acetate','cocamidopropyl betaine','cetearyl alcohol','cl 2-15 alkyl benzoate','triethanolamine','glyceryl stearate','steareth-2','propylparaben','methylparaben','dimethicone','caprylyl glycol','cetyl palmitate','tocopheryl acetate']
+        ignore_list = ['aqua','water','glycol','glycerin','glycerine','fragrance','preservative','colour','soap','sodium salicylate','sodium chloride','sodium citrate','xanthan','sodium lauroyl sacrcosinate','cetyl acetate','cocamidopropyl betaine','cetearyl alcohol','cl 2-15 alkyl benzoate','triethanolamine','glyceryl stearate','steareth-2','propylparaben','methylparaben','dimethicone','caprylyl glycol','cetyl palmitate','tocopheryl acetate']
         if each in ignore_list:
-            print("ignoring", each)
+            # print("ignoring", each)
             pass
         else:
             try:
@@ -37,7 +37,7 @@ def check_db(text):
                 else:
                     val = pubchempy.get_synonyms(each, 'name')[0]
                     val = val['Synonym']
-                    print("seaching in Synonym")
+                    # print("seaching in Synonym")
                     count = 0
                     for i in val:
                         count = count+1
@@ -49,9 +49,9 @@ def check_db(text):
                             break
                         if count == 150:
                             break
-                print("hazards")
-                print(found_list)
-                print(compound_names)
+                # print("hazards")
+                # print(found_list)
+                # print(compound_names)
             except:
                 pass
 
@@ -73,7 +73,7 @@ def cleaning(value):
     value = list(set(value))
     value = list(map(value_extraction, value))
     value = list(set(value))
-    print(value)
+    # print(value)
     return value
 
 
@@ -154,9 +154,9 @@ def human_senses(id,statement):
 # This is the main function, where all the first level of data ectraction happens by extracting from
 # the database.
 def retrieving(text):
-    print(text)
+    # print(text)
     found_list, compound_names = check_db(text)
-    print(compound_names)
+    # print(compound_names)
     if len(compound_names) == 1:
         element_names = compound_names[0]
         element_names = element_names.capitalize()
@@ -176,12 +176,12 @@ def retrieving(text):
     hazard_statement = []
     for each in found_list:
         # getting the hazard statement codes
-        print(each)
+        # print(each)
         HSC = (Hazardchemicals.objects.filter(chemical_name__iexact=each).first().hazardstatementcode).split('; ')
         HSC = [x for x in HSC if not x.startswith('A')]
         # HSC = [x for x in HSC if not len(x)==4]
         HazardStatementCode = HazardStatementCode + HSC
-        print(HazardStatementCode)
+        # print(HazardStatementCode)
         # getting the GHS codes
         ghsc = (Hazardchemicals.objects.filter(chemical_name__iexact=each).first().ghs_code).split('; ')
         while("" in ghsc) :
@@ -220,7 +220,7 @@ def retrieving(text):
 
     ghs_code = ghs_code_names
     ghs_dict = dict(zip(ghs_code, ghs_code_explain))
-    print(ghs_dict)
+    # print(ghs_dict)
 
     # filtering hazard statements
     hazard_statement = list(set(hazard_statement))

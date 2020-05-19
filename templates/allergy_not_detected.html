@@ -24,6 +24,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static "assets/css/style home.css"%}" rel="stylesheet">
+  <link href="/static/assets/img/icon.png" rel="icon">
   <script
       src="https://code.jquery.com/jquery-3.3.1.js"
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -45,7 +46,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>No Ingredients Detected</h1>
+          <h1>Check the Image</h1>
           <h2>Ingredients were not found in the picture uploaded. Click a clear picture of ingredients and reload it</h2>
           <div class="d-lg-flex">
             <a href="{% url 'allergy-info' %}" class="btn-get-started scrollto" style="background-color:#00a896">Click here to scan again</a>

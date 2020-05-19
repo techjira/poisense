@@ -3,11 +3,16 @@ certifi==2020.4.5.1
 chardet==3.0.4
 dj-database-url==0.5.0
 Django==3.0.5
+django-appconf==1.0.4
+django-crispy-forms==1.9.1
+django-select2==7.2.4
+django-simple-autocomplete==1.11
 gunicorn==20.0.4
 idna==2.9
 numpy==1.18.3
 opencv-python==4.2.0.34
 psycopg2==2.8.5
+PubChemPy==1.0.4
 python-dotenv==0.13.0
 pytz==2019.3
 requests==2.23.0

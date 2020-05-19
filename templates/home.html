@@ -41,7 +41,7 @@
 </head>
 
 
-<body >
+<body oncontextmenu="return false">
     <div id="header_file"></div>
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
@@ -49,7 +49,7 @@
         <div class="row">
           <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
             <h1>KEEPING YOUR KIDS SAFER</h1>
-            <h2>Poisense helps to identify the hazardous and poisonous ingredients along with food allergens in the home so that you and your loved ones could be safe</h2>
+            <h2 style="text-align:justify">Poisense helps to identify the hazardous and poisonous ingredients along with food allergens in the home so that you and your loved ones could be safe</h2>
             <div class="d-lg-flex">
               <a href="#why-us" class="btn-get-started scrollto">Get Started</a>
 
@@ -73,9 +73,9 @@
             <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
               <div class="content">
-                <h3>Sense an Ingredient</h3>
-                  <h6>Make sure the product does not contain any harmful chemicals thorugh Poisense.</h6>
-                  <a href="{% url 'sense' %}" class="btn-get-started">Sense an Ingredient</a>
+                <h3>Chemical Sense</h3>
+                  <h6>Making sure the household product do not contain any harmful chemicals through Poisense.</h6>
+                  <a href="{% url 'sense' %}" class="btn-get-started">Sense the Ingredients</a>
 
               </div>
 
@@ -102,8 +102,8 @@
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
               <h3>Food Sense</h3>
-                <h6>Make sure the food does not contain any potential allergens</h6>
-                <a href="{% url 'allergy-detection' %}" class="btn-get-started">Sense an Ingredient</a>
+                <h6>Making sure the food products do not contain any potential allergens</h6>
+                <a href="{% url 'allergy-detection' %}" class="btn-get-started">Sense the Ingredients</a>
               </p>
 
 

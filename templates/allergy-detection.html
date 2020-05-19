@@ -25,6 +25,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static "assets/css/style home.css"%}" rel="stylesheet">
+  <link href="/static/assets/img/icon.png" rel="icon">
 
 
     <script>
@@ -71,13 +72,13 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Allergy Detection</h2>
+          <h2>Food Sense</h2>
 
         </div>
 
         <div class="row d-md-flex justify-content-md-center features">
           <div class="col-xl-3 col-md-6 align-items-stretch mt-4 mt-xl-0" id="fadeshow1">
-            <img src="/static/assets/img/ingredient search.png"></img>
+            <img src="/static/assets/img/food search.png"></img>
           </div>
 
 
@@ -86,12 +87,12 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-camera"></i></div>
               <h4><a href="">Using Camera</a></h4>
-              <p>Not sure what to find? Place the product upright with the ingredients visible to capture an image.</p>
+              <p style="text-align:justify;">Not sure what to find? Place the product upright with the ingredients visible to capture an image.</p>
               <form enctype="multipart/form-data" action="{% url 'allergy-info' %}" method="POST" id="image_form">
                 {% csrf_token %}
                 {{ Allergyuploadform }}
                 <div class="d-block iphone-mockup" style="padding-top:10px">
-                  <p class="btn-get-started pointer" style="text-align:center;" value="" onclick="document.getElementById('file').click();">Click/Upload Image</p>
+                  <center><p class="btn-get-started pointer" style="text-align:center;" value="" onclick="document.getElementById('file').click();">Click/Upload Image</p></center>
                 </div>
                 <img id="output"/ width="100%" height="100%">
                 <div style="padding-top:10px">

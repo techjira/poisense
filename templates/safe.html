@@ -24,6 +24,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static "assets/css/style home.css"%}" rel="stylesheet">
+  <link href="/static/assets/img/icon.png" rel="icon">
   <script
       src="https://code.jquery.com/jquery-3.3.1.js"
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -46,9 +47,13 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
           <h1>No Hazards Detected</h1>
-          <h2>The ingredients detected are not found to be hazardous.</h2>
+          <h2>
+            {% if count_text %}
+              {{ count_text }} Ingredients were found.
+            {% endif %}
+            The ingredients detected are not found to be hazardous.</h2>
           <div class="d-lg-flex">
-            <a href="{% url 'homepage' %}" class="btn-get-started scrollto">Still Doubtful? Click to scan again</a>
+            <a href="{% url 'sense' %}" class="btn-get-started scrollto">Still Doubtful? Click to scan again</a>
 
           </div>
         </div>

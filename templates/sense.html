@@ -68,7 +68,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Sense an Ingredient</h2>
+          <h2>Chemical Sense</h2>
 
         </div>
 
@@ -88,9 +88,9 @@
               <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST" id="image_form">
                 {% csrf_token %}
                 {{ uploadform }}
-                <div class="d-block iphone-mockup" style="padding-top:10px">
+                <center><div class="d-block iphone-mockup" style="padding-top:10px">
                   <p class="btn-get-started pointer" style="text-align:center;" value="" onclick="document.getElementById('file').click();">Click/Upload Image</p>
-                </div>
+                </div></center>
                 <img id="output"/ width="100%" height="100%">
                 <div style="padding-top:10px">
                 <center><button class="btn-get-started" id="snap" type="submit" style="" value="Submit">Submit</button></center>
@@ -103,7 +103,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-info-circle"></i></div>
               <h4><a href="">Ingredient Input</a></h4>
-              <p>Know what the ingredient is? Simply search using the text box given below.</p>
+              <p>Know what the ingredient is? Use the text box given below to find out if its Hazardous.</p>
               <form enctype="multipart/form-data" action="{% url 'info' %}" method="POST">
                 {% csrf_token %}
                 <input list="browsers" name="browser" id="ingre_name">

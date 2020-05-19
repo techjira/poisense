@@ -10,14 +10,25 @@
 
     <nav class="nav-menu d-none d-lg-block">
       <ul>
-        <li><a href="{% url 'homepage' %}">Home</a></li>
-        <li><a href="{% url 'sense' %}">Sense an Ingredient</a></li>
+        <li><a href="{% url 'homepage' %}" style="color:white;">Home</a></li>
+        <li><a href="{% url 'sense' %}">Chemical Sense</a></li>
         <li><a href="{% url 'allergy-detection' %}">Food Sense</a></li>
-        <li class="drop-down"><a href="">Login</a>
+        {% if request.session.user_name %}
+          <li class="drop-down"><a href="">Hi! {{ request.session.user_name }}</a>
+        {% else %}
+          <li class="drop-down"><a href="">Account</a>
+        {% endif %}
           <ul>
-            <li><a href="#">Account</a></li>
-            <li><a href="#">Logout</a></li>
-
+            <!-- suqin -->
+            {% if request.session.user_name %}
+            <li><a href="/login/">Account</a></li>
+            {% else %}
+            <li><a href="/login/">Login</a></li>
+            <li><a href="/register/">Register</a></li>
+            {% endif %}
+            {% if request.session.user_name %}
+            <li><a href="/logout/">Logout</a></li>
+            {% endif %}
           </ul>
         </li>
 
