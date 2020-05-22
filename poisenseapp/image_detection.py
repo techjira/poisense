@@ -23,7 +23,7 @@ def read_text(img):
     url_api = "https://api.ocr.space/parse/image"
     _, compressedimage = cv2.imencode(".jpg", img, [1, 90])
     file_bytes = io.BytesIO(compressedimage)
-    apikey = "66ecf22d2d88957"
+    apikey = "65af9e7c3188957"
     result = requests.post(url_api,
                  files = {"image.jpg": file_bytes},
                  data = {"apikey": apikey ,
@@ -40,7 +40,7 @@ def read_text(img):
         text_detected = parsed_results.get("ParsedText")
         # print(1)
     except:
-        apikey2 = "a8fce43d5888957"
+        apikey2 = "66ecf22d2d88957"
         result = requests.post(url_api,
                      files = {"image.jpg": file_bytes},
                      data = {"apikey": apikey2 ,

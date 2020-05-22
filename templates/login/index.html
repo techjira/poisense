@@ -78,8 +78,8 @@ $(function(){
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio" style="background:#00A896">
-      <div class="container" data-aos="fade-up">
-
+      <!-- <div class="container" data-aos="fade-up"> -->
+      <div class="container">
         <div class="section-title">
           <h2>Allergens</h2>
           <p>Take a look at your kids food allergy</p>
@@ -87,7 +87,8 @@ $(function(){
         <!-- suqin -->
         <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
           {% for kid in kidinfo_list %}
-          <li data-filter=".{{ kid.id }}" style="text-transform:capitalize;">{{ kid.kid_name }}</li>
+          
+          <li data-filter=".{{ kid.id }}" onclick="inputFocus()" style="text-transform:capitalize; border:solid 2px whitesmoke; ">{{ kid.kid_name }}</li>
           </br>
           <li>
             <form action="{% url 'delete' kid.id %}" method="post">
@@ -98,11 +99,10 @@ $(function(){
           </li>
           {% endfor%}
         </ul>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          {% for kid in kidinfo_list %}
-
-          <!-- {% if kid.kid_allergy_as_list %} -->
+        {% for kid in kidinfo_list %}
+        
+        <div class="row portfolio-container">
+          
           {% for ele in kid.kid_allergy_as_list %}
 
 
@@ -205,9 +205,7 @@ $(function(){
           </div>
           {% endifequal %}
           {% endfor %}
-          <!-- {% endif %} -->
 
-          <!-- {% if kid.personalised_allergy_as_list %} -->
           {% for ele in kid.personalised_allergy_as_list %}
           {% if ele %}
           <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
@@ -217,20 +215,53 @@ $(function(){
               <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
                   class="ri-pencil-line"></i></a>
             </div>
+            
           </div>
           {% endif %}
-          {% endfor %}
-          <!-- {% endif %} -->
 
           {% endfor %}
+        
         </div>
-        <div style="text-align:right">
+        
+        <div class="row portfolio-container" style="text-align:left; position: absolute;">
+        <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}" id="prompt {{ kid.id }}" style="text-align: right;position: absolute;left: -232px;top: 253.828px;text-align:right; ">
+          <a href="{% url 'update' kid.id %}">
+            <input class="btn btn-primary btn-sm" type="submit" style="text-align:left; border:none; background:#05668D; float:left;"
+              value="Edit Allergens for {{ kid.kid_name }}" />
+          </a>
+        </div>
+      
+
+       <!--  <script>
+          function inputFocus(){
+          document.getElementById("prompt {{ kid.id }}").style.display="inline";
+
+        }
+  
+        </script>  -->
+        </div>
+        
+      
+          {% endfor %}
+        
+       
+        
+    
+      
+        <div class="btnclass" style="display: inline;">
+          
+
+          <a href="{% url 'allergy-detection' %}">
+            <input class="btn btn-primary btn-lg" type="submit" style="border:none; background:#05668D; float:right;margin-left: 10px;"
+              value="Food Sense" />
+          </a>
           <a href="{% url 'insert' %}">
-            <input class="btn btn-primary btn-lg" type="submit" style="border:none; background:#05668D"
+            <input class="btn btn-primary btn-lg" type="submit" style="border:none; background:#05668D;float:right;"
               value="Add Kids" />
           </a>
         </div>
-      </div>
+       
+    
 
       </div>
     </section><!-- End Portfolio Section -->

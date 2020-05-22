@@ -86,12 +86,19 @@ $(function(){
         <div class="form-group">
           {{ register_form.username.label_tag }}
           {{ register_form.username}}
-          <p style="font-size:12px">*Username is Case Sensitive</p>
+          
         </div>
         <div class="form-group">
           {{ register_form.password1.label_tag }}
           {{ register_form.password1 }}
-          <p style="font-size:12px">*Minimum 8 characters & atleast 1 number</p>
+          <!-- 0521suqin -->
+          <p id="prompt" style="font-size: 11px; display: none;"> *Use 8 or more characters with a mix of letters, numbers</p>
+          <script>
+            function inputFocus(){
+            document.getElementById("prompt").style.display="inline";
+          }
+
+          </script>
         </div>
         <div class="form-group">
           {{ register_form.password2.label_tag }}

@@ -74,7 +74,7 @@ def allergy(request):
                 text = aid.final_text(str(uploaded_file_url)[1:])
                 fs.delete(filename)
                 print(text)
-                found_allergies,found_allergies_list = allergy_retrieving(text)
+                found_allergies,found_allergies_list,symptoms = allergy_retrieving(text)
                 personal = personalised(text,userid,found_allergies_list)
                 print(personal)
                 print(bool(found_allergies))
@@ -88,7 +88,7 @@ def allergy(request):
                 elif not bool(found_allergies_list):
                     if not bool(personal):
                         return render(request, 'allergy_safe.html')
-                return render(request, 'allergy-info.html', {'found_allergies': found_allergies,'personal':personal})
+                return render(request, 'allergy-info.html', {'found_allergies': found_allergies,'personal':personal,'symptoms':symptoms})
     else:
         Allergyuploadform = UploadAllergyFileForm()
     return render(request, 'allergy-detection.html', {'Allergyuploadform': Allergyuploadform})
@@ -109,7 +109,7 @@ def sense(request):
                 uploaded_file_url = fs.url(filename)
                 text = final_text(str(uploaded_file_url)[1:])
                 text = [x.strip() for x in text]
-                fs.delete(filename)
+                # fs.delete(filename)
                 print(text)
 
                 if text == ["not detected"]:
@@ -282,11 +282,14 @@ def register(request):
                 same_name_user = models.User.objects.filter(username=username)
                 pattern = re.compile('[0-9]+')
                 match = pattern.findall(password1)
+                # 0521suqin
+                pattern = re.compile('[a-zA-Z]')
+                match1 = pattern.findall(password1)
                 if same_name_user:
-                    message = 'The username already existed'
+                    message = 'the username is already existed'
                     return render(request, 'login/register.html', locals())
 
-                if  len(password1) < 8 or not match:
+                if  len(password1) < 8 or not match or not match1:
                     message = 'Make sure the password is at least 8 characters and contains at least one number.'
                     return render(request, 'login/register.html', locals())
                 # save new user

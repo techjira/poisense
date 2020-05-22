@@ -57,19 +57,16 @@
                 <p style="color:#fff">Add and Edit your Kids / Allergies</p>
               </div>
             </div>
+   
 
-
-    <div class="row d-xl-flex justify-content-xl-center">
-        <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-        <div class="">
-            <form action="" method="POST" role="form" class="php-email-form">
-              <div class="form-row">
-                <div class="form-group col-md-6">
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <form action="" method="POST">
                 {% csrf_token %}
-              </div>
-            </div>
+                 
                 <div class="form-group">
-
+               
                 <strong>{{ form.kid_name|as_crispy_field }}</strong>
                 </div>
                 <div class="form-group">
@@ -83,23 +80,23 @@
                 <p>if you have multiple allergens, please seperate them by a comma.</p>
                 {{ form.personalised_allergy }}
                 </div>
+                
+                
 
-
-
-
+            
 
         <div class="row">
-
+        
         <div class="col-md-8">
         </br>
-            <button type="submit" class="btn-get-started"><i class="fas fa-database"></i>
+            <button type="submit" class="btn btn-success btn-block btn-lg" style="background-color: #05668D;"><i class="fas fa-database"></i>
                 Submit</button>
         </div>
 
         <div class="col-md-4">
         </br>
-            <a href="{% url 'list' %}" >
-                <button class="btn-get-started"><i class="fas fa-database"></i> Back to list</button>
+            <a href="{% url 'list' %}" class="btn btn-secondary btn-block btn-lg">
+                <i class="fas fa-stream"></i> Back to list
             </a>
         </div>
     </div>
@@ -114,7 +111,6 @@
     </div>
 
           </section>
-
 
 
 

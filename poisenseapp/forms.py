@@ -40,7 +40,8 @@ class UserForm(forms.Form):
 
 class RegisterForm(forms.Form):
     username = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Username",'autofocus': ''}))
-    password1 = forms.CharField(max_length=256, widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': "Password",'autofocus': ''}))
+    # 0521suqin
+    password1 = forms.CharField(max_length=256, widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': "Password",'autofocus': '','onfocus': "inputFocus()"}))
     password2 = forms.CharField(max_length=256, widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': "Password(repeat)",'autofocus': ''}))
 
     def __init__(self, *args, **kwargs):

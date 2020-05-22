@@ -76,7 +76,9 @@
     });
     </script>
 </head>
-
+<style media="screen">
+  .pointer {cursor: pointer;}
+</style>
 <body>
 
     <div id="header_file"></div>
@@ -112,7 +114,7 @@
     </section>
     {% endif %}
     {% if found_allergies %}
-    <div class="team-clean" style="background-color: #F0F3BD;">
+    <div class="team-clean" style="background-color: #d1d4a2;">
       <br>
         <div class="container">
             <div class="intro">
@@ -120,9 +122,9 @@
                 <h2 class="text-center flash animated">COMMON FOOD ALLERGENS DETECTED</h2>
             </div>
 
-            <div class="row d-xl-flex justify-content-xl-center people" data-aos="fade-up" data-aos-delay="150">
+            <div class="row d-xl-flex justify-content-xl-center people" >
               {% for key, values in found_allergies.items %}
-                <div class="col-md-6 col-lg-4 item"><img class="" src="/static/assets/img/{{ key }}.svg" style="width: 100px;max-height: 199px;">
+                <div class="col-md-6 col-lg-4 item pointer" data-toggle="modal" data-target="#{{ key|slugify  }}"><img class="" src="/static/assets/img/{{ key }}.svg" style="width: 100px;max-height: 199px;">
                     <h3 class="name" style="text-transform: capitalize;">{{ key }}</h3>
                     <p class="title" style="color:#001011;">{{ values }}</p>
                 </div>
@@ -132,20 +134,26 @@
 
     </div>
     {% endif %}
-    <!-- <div class="social-icons">
-        <p><strong>MAY CONTAIN TRACES OF&nbsp;</strong></p>
-        <div class="row">
-            <div class="col"><img src="assets/img/egg.svg" style="max-width: 30%;max-height: 16%;">
-                <p>EGGS</p>
-            </div>
-            <div class="col"><img src="assets/img/peanut.svg" style="max-width: 30%;max-height: 16%;">
-                <p>PEANUTS</p>
-            </div>
-            <div class="col"><img src="assets/img/milk.svg" style="max-width: 30%;max-height: 16%;">
-                <p>MILK</p>
-            </div>
-        </div>
-    </div> -->
+
+    {% for key, values in symptoms.items %}
+    <div class="modal fade" id="{{ key|slugify  }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="text-transform: capitalize;">Allergic Symptoms of {{ key }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align:justify">
+        {% for i in values %}
+        <li>  {{ i }} </li>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+    {% endfor %}
     <div id="footer"></div>
 
     <script src="{% static "assets/js/jquery.min.js"%}"></script>

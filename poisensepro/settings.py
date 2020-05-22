@@ -99,10 +99,10 @@ WSGI_APPLICATION = 'poisensepro.wsgi.application'
 DATABASES = {
     'default': {
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'du10u51f3t4lp',
-        'USER': 'zuitfyfhzcxnyp',
-        'PASSWORD': '9420727135fd11865a3be095f58cc3edd8ab6f8b0a7ac8a7ef8c50b64c68fecd',
-        'HOST': 'ec2-35-169-254-43.compute-1.amazonaws.com',
+        'NAME': 'd5gtn4hctumisk',
+        'USER': 'jomlfyainwadpd',
+        'PASSWORD': '89beefeaf2e9e5f2be699c5179270b047432149d3b3f5dca1c4d5ae46760bca3',
+        'HOST': 'ec2-52-200-48-116.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
@@ -156,8 +156,6 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # # this is used by pruthvi to run on his local system, pls comment the staticfiles when putting this up on heroku
-#
-#
 # STATICFILES_DIRS = [
 #    os.path.join(BASE_DIR, "static"),
 #    '/var/www/static/',

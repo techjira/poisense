@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from .forms import UploadFileForm
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-from poisenseapp.models import Altername, User, UserAllergyinfo
+from poisenseapp.models import Altername, User, UserAllergyinfo, Signandtreatment
 import cv2
 import numpy as np
 import requests
@@ -117,15 +117,19 @@ def allergy_retrieving(text):
             combine = re.sub(r"(\b, \b)(?!.*\1)", r" and ", combine)
             found_allergies[key] = combine
 
+        symptoms = {}
+        for i in found_allergies_list:
+            symptoms[i] = (Signandtreatment.objects.filter(categories__icontains=str(i)).first().symptoms).split('\n')
         if "ngredient" in text_detected:
-            return found_allergies,found_allergies_list
+            return found_allergies,found_allergies_list,symptoms
         elif "contain" in text_detected:
-            return found_allergies,found_allergies_list
+            return found_allergies,found_allergies_list,symptoms
         else:
             found_allergies = "not detected"
-            return found_allergies,found_allergies_list
+            return found_allergies,found_allergies_list,symptoms
     except:
         found_allergies = "not detected"
         found_allergies_list = {}
+        symptoms = {}
         return found_allergies,found_allergies_list
-    return found_allergies,found_allergies_list
+    return found_allergies,found_allergies_list, symptoms
