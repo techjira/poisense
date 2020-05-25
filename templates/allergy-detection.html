@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 {% load static %}
-
+<!-- Food Sense Page -->
 <html>
-
+<!-- Header Section -->
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>Sense an Ingredient</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
   <link href="/static/assets/img/icon.png" rel="icon">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
   <!-- Vendor CSS Files -->
   <link href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
   <link href="{% static "assets/vendor/icofont/icofont.min.css"%}" rel="stylesheet">
@@ -22,12 +20,10 @@
   <link href="{% static "assets/vendor/venobox/venobox.css"%}" rel="stylesheet">
   <link href="{% static "assets/vendor/owl.carousel/assets/owl.carousel.min.css"%}" rel="stylesheet">
   <link href="{% static "assets/vendor/aos/aos.css"%}" rel="stylesheet">
-
   <!-- Template Main CSS File -->
   <link href="{% static "assets/css/style home.css"%}" rel="stylesheet">
   <link href="/static/assets/img/icon.png" rel="icon">
-
-
+  <!-- Script files to upload image and header and footer -->
     <script>
       var loadFile = function(event) {
       var output = document.getElementById('output');
@@ -36,7 +32,6 @@
       URL.revokeObjectURL(output.src) // free memory
       }
     };
-
     </script>
     <style media="screen">
     @media only screen and (max-width: 1026px) {
@@ -44,6 +39,7 @@
         display: none;
     }
   }
+  /* Pointer used to change the cursor on pointing any icon */
   .pointer {cursor: pointer;}
     </style>
     <script
@@ -59,30 +55,22 @@
     </script>
 
 </head>
-
+<!-- End header Section -->
 <body>
+  <!-- Page Header file -->
   <div id="header_file"></div>
-
+  <!-- Main section -->
   <main id="main">
-
-
-
-    <!-- ======= Services Section ======= -->
+    <!-- ======= Image Upload Section ======= -->
     <section id="services" class="services section-bg" style="background:#028090">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
           <h2>Food Sense</h2>
-
         </div>
-
         <div class="row d-md-flex justify-content-md-center features">
           <div class="col-xl-3 col-md-6 align-items-stretch mt-4 mt-xl-0" id="fadeshow1">
             <img src="/static/assets/img/food search.png"></img>
           </div>
-
-
-
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-camera"></i></div>
@@ -101,20 +89,17 @@
               </form>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
+    <!-- End Image upload Section -->
+  </main>
+  <!-- End #main -->
 
-
-  </main><!-- End #main -->
-
+    <!-- Footer Section -->
     <div id="footer"></div>
-
     <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
     <div id="preloader"></div>
-
     <!-- Vendor JS Files -->
     <script src="{% static "assets/vendor/jquery/jquery.min.js"%}"></script>
     <script src="{% static "assets/vendor/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
@@ -125,7 +110,6 @@
     <script src="{% static "assets/vendor/venobox/venobox.min.js"%}"></script>
     <script src="{% static "assets/vendor/owl.carousel/owl.carousel.min.js"%}"></script>
     <script src="{% static "assets/vendor/aos/aos.js"%}"></script>
-
     <!-- Template Main JS File -->
     <script src="{% static "assets/js/main home.js"%}"></script>
 

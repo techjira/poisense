@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
+<!-- Allergy Info Section -->
 <html>
-
+<!--  Header Section -->
 <head>
     <link href="/static/assets/img/icon.png" rel="icon">
     <meta charset="utf-8">
@@ -50,11 +51,8 @@
     <link rel="stylesheet" href="{% static "assets/css/Team-Clean.css"%}">
     <link rel="stylesheet" href="{% static "assets/css/Team-Grid.css"%}">
     <link rel="stylesheet" href="{% static "assets/css/style home.css"%}">
-
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
     <link href="{% static "assets/vendor/icofont/icofont.min.css"%}" rel="stylesheet">
@@ -63,7 +61,7 @@
     <link href="{% static "assets/vendor/venobox/venobox.css"%}" rel="stylesheet">
     <link href="{% static "assets/vendor/owl.carousel/assets/owl.carousel.min.css"%}" rel="stylesheet">
     <link href="{% static "assets/vendor/aos/aos.css"%}" rel="stylesheet">
-
+    <!-- Script Files to read header and footer files -->
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -82,6 +80,8 @@
 <body>
 
     <div id="header_file"></div>
+
+    <!-- personlised allergy section -->
     {% if personal %}
     <section id="services" class="services section-bg" style="background:#028090">
       <br>
@@ -96,32 +96,35 @@
         <br>
         <div class="row d-xl-flex justify-content-center justify-content-xl-center">
           {% for each in values %}
-          <div class="col-sm-6 col-md-5 col-lg-2 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-sm-6 col-md-5 col-lg-2 d-flex align-items-stretch justify-content-center" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box" style="width:160px; height:200px">
               <center>
               <img src="/static/assets/img/{{ each }}.svg"  alt=""
        onerror="this.onerror=null; this.src='/static/assets/img/block.svg'" width="60px">
-              <!-- <div class="image"><img src="/static/assets/img/{{ each }}.svg" class="fit-image"></div> -->
+
               <h4 style="text-transform: capitalize;">{{ each }}</h4>
             </center>
             </div>
           </div>
+          <br>
           {% endfor %}
 
         </div>
+        <br>
         {% endfor %}
       </div>
     </section>
     {% endif %}
+    <!-- End Personalised allergy Section -->
+
+    <!-- Common allergy Section -->
     {% if found_allergies %}
     <div class="team-clean" style="background-color: #d1d4a2;">
       <br>
         <div class="container">
             <div class="intro">
-
                 <h2 class="text-center flash animated">COMMON FOOD ALLERGENS DETECTED</h2>
             </div>
-
             <div class="row d-xl-flex justify-content-xl-center people" >
               {% for key, values in found_allergies.items %}
                 <div class="col-md-6 col-lg-4 item pointer" data-toggle="modal" data-target="#{{ key|slugify  }}"><img class="" src="/static/assets/img/{{ key }}.svg" style="width: 100px;max-height: 199px;">
@@ -131,10 +134,11 @@
               {% endfor %}
             </div>
         </div>
-
     </div>
     {% endif %}
+    <!-- End Common Allergy Section -->
 
+    <!-- Common Allergy Symptoms Section -->
     {% for key, values in symptoms.items %}
     <div class="modal fade" id="{{ key|slugify  }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -154,8 +158,10 @@
   </div>
 </div>
     {% endfor %}
-    <div id="footer"></div>
+    <!-- End Common allergy Symptoms Section -->
 
+    <!-- Footer Section -->
+    <div id="footer"></div>
     <script src="{% static "assets/js/jquery.min.js"%}"></script>
     <script src="{% static "assets/bootstrap/js/bootstrap.min.js"%}"></script>
     <script src="{% static "assets/js/bs-init.js"%}"></script>
@@ -176,5 +182,4 @@
     <script src="{% static "assets/vendor/owl.carousel/owl.carousel.min.js"%}"></script>
     <script src="{% static "assets/vendor/aos/aos.js"%}"></script>
 </body>
-
 </html>

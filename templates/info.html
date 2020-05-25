@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
+<!-- Chemical Sense Info Page -->
 <html>
-
+<!-- Header Part -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -46,7 +47,6 @@
     <link href="/static/assets/img/icon.png" rel="icon">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
     <link href="{% static "assets/vendor/icofont/icofont.min.css"%}" rel="stylesheet">
@@ -55,12 +55,10 @@
     <link href="{% static "assets/vendor/venobox/venobox.css"%}" rel="stylesheet">
     <link href="{% static "assets/vendor/owl.carousel/assets/owl.carousel.min.css"%}" rel="stylesheet">
     <link href="{% static "assets/vendor/aos/aos.css"%}" rel="stylesheet">
-
     <!-- Template Main CSS File -->
     <link href="{% static "assets/css/style home.css"%}" rel="stylesheet">
-
 </head>
-
+<!-- Scripts to load Header and footer and upload Image -->
 <script type="text/javascript">
   function dynamicUrl() {
     var url = "/static/img/" + code + ".png"
@@ -80,19 +78,26 @@ $(function(){
 </script>
 
 <body>
+  <!-- Header section -->
   <div id="header_files"></div>
 
+  <!-- HAZARDOUS info Section -->
     <div class="features-boxed" style="background-color:#05668D;">
         <div class="container">
             <div class="intro">
               <br>
                 <h2 class="text-center flash animated" style="color: rgb(255,255,255);margin-bottom: -15px;">HAZARDS FOUND</h2>
-                <h2 class="text-center" style="color: rgb(255,255,255);">
+                <br>
+
+                <!-- Hazard Found Element name -->
+                <h3 class="text-center" style="color: rgb(255,255,255);">
                   {% if element_names %}
                     {{element_names}}
                   {% endif %}
-                </h2>
+                </h3>
+                <!-- End Hazard Found Element name  -->
             </div>
+            <!-- Hazard GHS classification Symbols -->
             <div class="row justify-content-center pulse animated">
               {% for key, values in ghs_dict.items %}
                 <div class="col-md-6 col-lg-4" style="width: 300px;height: 445px;">
@@ -117,9 +122,11 @@ $(function(){
                 </div>
                 {% endfor %}
             </div>
+            <!-- End Hazard GHS Classification Symbols -->
         </div>
     </div>
 
+    <!-- Display Effects and Precautions -->
     <div class="features-boxed">
         <div id="minimal-tabs">
             <ul class="nav nav-tabs text-center d-flex d-xl-flex justify-content-center justify-content-xl-center">
@@ -197,6 +204,8 @@ $(function(){
             </div>
         </div>
     </div>
+
+    <!-- Footer Section -->
     <div id="footer"></div>
 
 

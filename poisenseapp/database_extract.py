@@ -22,18 +22,14 @@ def check_db(text):
     found_list = []
     compound_names = []
     for each in text:
-        # print("loop", each)
-        # each = re.sub("[\(.*?[\)]", "", each)
         ignore_list = ['aqua','water','glycol','glycerin','glycerine','fragrance','preservative','colour','soap','sodium salicylate','sodium chloride','sodium citrate','xanthan','sodium lauroyl sacrcosinate','cetyl acetate','cocamidopropyl betaine','cetearyl alcohol','cl 2-15 alkyl benzoate','triethanolamine','glyceryl stearate','steareth-2','propylparaben','methylparaben','dimethicone','caprylyl glycol','cetyl palmitate','tocopheryl acetate']
         if each in ignore_list:
-            # print("ignoring", each)
             pass
         else:
             try:
                 if (Hazardchemicals.objects.filter(chemical_name__iexact=each)).count()>=1:
                     found_list.append(each)
                     compound_names.append(each)
-
                 else:
                     val = pubchempy.get_synonyms(each, 'name')[0]
                     val = val['Synonym']
@@ -49,9 +45,7 @@ def check_db(text):
                             break
                         if count == 150:
                             break
-                # print("hazards")
-                # print(found_list)
-                # print(compound_names)
+                
             except:
                 pass
 

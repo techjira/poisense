@@ -34,12 +34,20 @@ def read_text(img):
 
     result = result.content.decode()
     result = json.loads(result)
-
+    print(result)
     try:
         parsed_results = result.get("ParsedResults")[0]
         text_detected = parsed_results.get("ParsedText")
-        # print(1)
+        print(1)
     except:
+        scale_percent = 60 # percent of original size
+        width = int(img.shape[1] * scale_percent / 100)
+        height = int(img.shape[0] * scale_percent / 100)
+        dim = (width, height)
+        # resize image
+        img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+        _, compressedimage = cv2.imencode(".jpg", img, [1, 90])
+        file_bytes = io.BytesIO(compressedimage)
         apikey2 = "a8fce43d5888957"
         result = requests.post(url_api,
                      files = {"image.jpg": file_bytes},
@@ -54,11 +62,11 @@ def read_text(img):
         try:
             parsed_results = result.get("ParsedResults")[0]
             text_detected = parsed_results.get("ParsedText")
-            # print(2)
+            print(2)
         except:
             text_detected =""
-            # print(3)
-    # print(text_detected)
+            print(3)
+    print(text_detected)
     return text_detected
 
 # the below code is used to process the image

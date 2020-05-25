@@ -34,7 +34,8 @@ def personalised(text,userid,found_allergies):
                 kid_name = UserAllergyinfo.objects.get(userid=userid,kid_id=each).kid_name
                 # print(kid_name)
                 try:
-                    kid_allergy = (UserAllergyinfo.objects.get(userid=userid,kid_id=each).kid_allergy).split(',')
+                    kid_allergy = [x.strip() for x in(UserAllergyinfo.objects.get(userid=userid,kid_id=each).kid_allergy).split(',')]
+                    print(kid_allergy)
                     for val in kid_allergy:
                         if val in found_allergies:
                             if kid_name.capitalize() in allergy_dict:
@@ -75,37 +76,30 @@ def personalised(text,userid,found_allergies):
         allergy_dict = ""
         return allergy_dict
 
-
+# The below fution is used to extractthe most common allergies that are found in the text extracted
 def allergy_retrieving(text):
     try:
+        # Cleaning the extracted text before checking for the elements
         text_detected = text.lower()
         text_detected = re.sub(r'\r\n', ' ',text_detected)
         text_detected = re.sub(r'[%\*\n]','',text_detected)
-        # text_detected = re.sub(r'w/v','',text_detected)
-        # print(text_detected)
+        # Making a list of allergies
         list_allergies = list(Altername.objects.values_list('alternativeingredient', flat=True))
-        # print(list_allergies)
         all_values = Altername.objects.all()
-        # for item in all_values:
-        #     print(item.alternativeingredient)
-        #     print(item.category)
-
         found_allergies = dict()
         for each in list_allergies:
             if each in text_detected:
+                # ignoring if it contains any words such as gluten free kind
                 consider_free = each + " free"
                 if consider_free not in text_detected:
                     try:
-                        # print(each)
                         category = Altername.objects.filter(alternativeingredient__icontains=str(each)).first().category
-                        # print("category ", category)
-                        # found_allergies[category] = each
-
+                        # if allergy found append to dict
                         if category in found_allergies:
-                            # print("appending",each)
+
                             found_allergies[category].append(each)
                         else:
-                            # print("creating with",each)
+
                             found_allergies[category] = [each,]
                     except:
                         pass
@@ -120,6 +114,7 @@ def allergy_retrieving(text):
         symptoms = {}
         for i in found_allergies_list:
             symptoms[i] = (Signandtreatment.objects.filter(categories__icontains=str(i)).first().symptoms).split('\n')
+        # if ngrediets or contains is not found in the text extracted, then the user is asked to upload the image again
         if "ngredient" in text_detected:
             return found_allergies,found_allergies_list,symptoms
         elif "contain" in text_detected:
@@ -131,5 +126,6 @@ def allergy_retrieving(text):
         found_allergies = "not detected"
         found_allergies_list = {}
         symptoms = {}
-        return found_allergies,found_allergies_list
+        # if non works out, then blank entries are returned
+        return found_allergies,found_allergies_list, symptoms
     return found_allergies,found_allergies_list, symptoms

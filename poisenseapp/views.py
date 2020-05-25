@@ -24,7 +24,6 @@ import random
 import string
 from pubchempy import get_compounds
 import poisenseapp.allergy_image_detection as aid
-
 from . import models
 from . import forms
 import hashlib
@@ -47,38 +46,35 @@ def footer(request):
 def home(request):
     return render(request, 'home.html')
 
-def ssl(request):
-    return render(request, '.well-known/acme-challenge/YWObyQs8K90gboL2UYaiKB6_k2emxhUuG-mZQ7yOg4c')
-
-def ssl2(request):
-    return render(request, '.well-known/acme-challenge/51_a9PO7gke53ZMZV0kbWLwiLIAn9xM2gsPFEaQS2j0')
-
-
 # using the following function to generate random name for image files to avoid file name errors
 def randomString(stringLength=8):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
-# complete functionality of the app is in this function
+# Requests the allergy related pages as well extracting text and allergy info from it
 def allergy(request):
+    # storing user_id
     userid = request.session.get('user_id')
     fs = FileSystemStorage()
     if request.method == 'POST':
         Allergyuploadform = UploadAllergyFileForm(request.POST,request.FILES)
+        # On sumbitting form the following actions take place
         if Allergyuploadform.is_valid():
             if request.method == 'POST' and request.FILES['Allergy_file']:
                 file = request.FILES['Allergy_file']
+                # Image names could have symbols which will cause issues in reading files
+                # Hence Randomizing the name
                 file_name = randomString(8)
                 filename = fs.save(file_name, file)
                 uploaded_file_url = fs.url(filename)
+                text = ""
+                # Extracting the text from image using the following final_text function
                 text = aid.final_text(str(uploaded_file_url)[1:])
+                # deleting the image once the text has been extracted for the safety of user as well as to safe the memeory of the server
                 fs.delete(filename)
-                print(text)
+                # retreiving the allergies found and their symptoms from the following 2 functions
                 found_allergies,found_allergies_list,symptoms = allergy_retrieving(text)
                 personal = personalised(text,userid,found_allergies_list)
-                print(personal)
-                print(bool(found_allergies))
-                print(found_allergies_list)
                 if found_allergies == "not detected":
                     if not bool(personal):
                         return render(request, 'allergy_not_detected.html')
@@ -93,25 +89,30 @@ def allergy(request):
         Allergyuploadform = UploadAllergyFileForm()
     return render(request, 'allergy-detection.html', {'Allergyuploadform': Allergyuploadform})
 
-
+# Sense is used to sense the chemical ingredients
 def sense(request):
     fs = FileSystemStorage()
+    #  storing all the chemical names in the query results to be used to populate in the text input form
     query_results = list(Hazardchemicals.objects.all().values_list("chemical_name", flat=True))
+    #  If a form has been submitted then it enters the condition
     if request.method == 'POST':
         # loading forms
         uploadform = UploadFileForm(request.POST,request.FILES)
         input_form = ChemForm(request.POST)
+        #  Depending on the form which is valid, enters that condition
         if uploadform.is_valid():
             if request.method == 'POST' and request.FILES['file']:
                 file = request.FILES['file']
+                # Image names could have symbols which will cause issues in reading files
+                # Hence Randomizing the name
                 file_name = randomString(8)
                 filename = fs.save(file_name, file)
                 uploaded_file_url = fs.url(filename)
+                # Extracting the text from image using the following final_text function
                 text = final_text(str(uploaded_file_url)[1:])
                 text = [x.strip() for x in text]
-                # fs.delete(filename)
-                print(text)
-
+                # deleting the image once the text has been extracted for the safety of user as well as to safe the memeory of the server
+                fs.delete(filename)
                 if text == ["not detected"]:
                     uploadform = UploadFileForm()
                     input_form = ChemForm()
@@ -122,22 +123,18 @@ def sense(request):
             dropdown = request.POST.get('browser', None)
             text.append(dropdown)
             print(text)
-
-
-
+        # extracting all the details that will be required to be displayed to the user for the details of chemicals
         element_names,hs_eye, hs_skin, hs_inhale, hs_ingestion, hs_other,ghs_code,prevention,rs_eye, rs_skin, rs_inhale, rs_ingestion, rs_other,storage, ghs_dict = retrieving(text)
-
         # if no ingredients gets detected then safe.html is displayed
         if element_names == "NO ELEMENT FOUND":
             count_text = len(text)
             return render(request, 'safe.html', {'count_text':count_text})
-
         return render(request, 'info.html', {
             'element_names':element_names,'hs_eye':hs_eye,'hs_skin':hs_skin,'hs_inhale':hs_inhale,'hs_ingestion':hs_ingestion,'hs_other':hs_other,'ghs_code':ghs_code,'prevention':prevention,'rs_eye':rs_eye,'rs_skin':rs_skin,'rs_inhale':rs_inhale,'rs_ingestion':rs_ingestion,'rs_other':rs_other,'storage':storage,'ghs_dict':ghs_dict})
+    # if non of the conditions were satisfied, just displays the page with the forms for the user to enter
     else:
         uploadform = UploadFileForm()
         input_form = ChemForm()
-
     return render(request, 'sense.html', {'uploadform': uploadform,'input_form':input_form,'query_results':query_results})
 
 # add your kid's allergic information
