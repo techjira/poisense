@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Poisense-Login</title>
+  <title>Poisense Login</title>
   <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
@@ -58,7 +58,7 @@
   <link href="/static/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="/static/vendor/aos/aos.css" rel="stylesheet">
 </head>
-
+ <!-- load header and footer -->
 <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -73,16 +73,17 @@ $(function(){
 
 <body>
   <div id="header_file"></div>
+  <!-- main section -->
   <div class="register-photo" style="background:#00A896">
     <div class="form-container">
       <div class="image-holder"
         style="background-image: url(&quot;/static/img/Signup2.jpg&quot;);background-size: cover;background-repeat: no-repeat;background-position: center;">
       </div>
-      <!-- suqin -->
+      <!-- Login Form -->
       <form class="form-login" action="/login/" method="post">
         <h2 class="text-center"><strong>Login</strong></h2>
         {% if message %}
-        <div class="alert alert-warning">{{ message }}</div>
+          <div class="alert alert-warning">{{ message }}</div>
         {% endif %}
         {% csrf_token %}
         <div class="form-group">
@@ -94,10 +95,11 @@ $(function(){
         <button type="submit" class="btn btn-primary btn-lg btn-block ">Log in</button>
         </br>
         <a class="already" href="/register/">Don't have an Account? Create a new one.</a>
-    </div>
-    </form>
+      </form>
+      <!-- Login Form End-->
+    </div>   
   </div>
-  </div>
+  <!-- main section end-->
   <div id="footer"></div>
   <script src="/static/js/jquery.min.js"></script>
   <script src="/static/bootstrap/js/bootstrap.min.js"></script>

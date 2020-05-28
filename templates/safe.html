@@ -45,9 +45,9 @@
           <h1>No Hazards Detected</h1>
           <h2>
             {% if count_text %}
-              {{ count_text }} Ingredient/s were found.
+              {{ count_text }} Ingredient{% if count_text > 1 %}s were found. The ingredients detected are not found to be hazardous.{% else %} was found. The ingredient detected is not found to be hazardous.{% endif %}
             {% endif %}
-            The ingredient/s detected is/are not found to be hazardous.</h2>
+          </h2>
           <div class="d-lg-flex">
             <a href="{% url 'sense' %}" class="btn-get-started scrollto">Still Doubtful? Click to scan again</a>
           </div>

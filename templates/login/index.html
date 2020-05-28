@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <link href="/static/assets/img/icon.png" rel="icon">
-  <title>Poisense</title>
+  <title>User Account Page</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -18,12 +18,9 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-
-  <!-- suqin -->
   <link rel="stylesheet" href="{% static "vendor/bootstrap/css/bootstrap.min.css"%}">
   <link rel="stylesheet" href="{% static "vendor/icofont/icofont.min.css"%}">
   <link rel="stylesheet" href="{% static "vendor/boxicons/css/boxicons.min.css"%}">
-
   <link rel="stylesheet" href="{% static "vendor/remixicon/remixicon.css"%}">
   <link rel="stylesheet" href="{% static "vendor/venobox/venobox.css"%}">
   <link rel="stylesheet" href="{% static "vendor/owl.carousel/assets/owl.carousel.min.css"%}">
@@ -32,6 +29,7 @@
   <!-- Template Main CSS File -->
   <link rel="stylesheet" href="{% static "css/style home.css"%}">
 </head>
+<!-- load header and footer -->
 <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -46,47 +44,19 @@ $(function(){
 
 <body>
   <div id="header_file"></div>
+  <!-- Main section -->
   <main id="main">
-
-    <!-- Modal form -->
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Change in Food Allergies</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-              <i class="fas fa-envelope prefix grey-text"></i>
-              <label> Personalized Food Allergies </label>
-              <input type="text" id="p_allergies" class="form-control validate">
-            </div>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-default">Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--Modal: modalConfirmDelete-->
-
-    <!-- ======= Portfolio Section ======= -->
+    <!-- ======= User Account Section ======= -->
     <section id="portfolio" class="portfolio" style="background:#00A896">
-      <!-- <div class="container" data-aos="fade-up"> -->
       <div class="container">
+        <!-- kids name display -->
         <div class="section-title">
           <h2>Allergens</h2>
           <p>Take a look at your kids food allergy</p>
         </div>
         <!-- suqin -->
         <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-          {% for kid in kidinfo_list %}
-          
+          {% for kid in kidinfo_list %}         
           <li data-filter=".{{ kid.id }}" onclick="inputFocus()" style="text-transform:capitalize; border:solid 2px whitesmoke; ">{{ kid.kid_name }}</li>
           </br>
           <li>
@@ -98,12 +68,11 @@ $(function(){
           </li>
           {% endfor%}
         </ul>
-        {% for kid in kidinfo_list %}
-        
-        <div class="row portfolio-container">
-          
+        <!-- kids name display end-->
+        {% for kid in kidinfo_list %}     
+        <!-- section: display allergen for each kid-->  
+        <div class="row portfolio-container">          
           {% for ele in kid.kid_allergy_as_list %}
-
 
           {% ifequal ele "fish" %}
           <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}">
@@ -213,14 +182,13 @@ $(function(){
               <h4>{{ ele }}</h4>
               <a href="{% url 'update' kid.id %}" class="details-link" title="Edit Allergy Info"><i
                   class="ri-pencil-line"></i></a>
-            </div>
-            
+            </div>            
           </div>
           {% endif %}
 
-          {% endfor %}
-        
+          {% endfor %}       
         </div>
+        <!-- section: display allergen for each kid END--> 
         
         <div class="row portfolio-container" style="text-align:left; position: absolute;">
         <div class="col-lg-4 col-md-6 portfolio-item {{ kid.id }}" id="prompt {{ kid.id }}" style="text-align: right;position: absolute;left: -232px;top: 253.828px;text-align:right; ">
@@ -229,27 +197,11 @@ $(function(){
               value="Edit Allergens for {{ kid.kid_name }}" />
           </a>
         </div>
-      
-
-       <!--  <script>
-          function inputFocus(){
-          document.getElementById("prompt {{ kid.id }}").style.display="inline";
-
-        }
-  
-        </script>  -->
         </div>
-        
-      
-          {% endfor %}
-        
-       
-        
-    
-      
-        <div class="btnclass" style="display: inline;">
-          
 
+        {% endfor %}
+        <!-- section for add kids and food sense -->
+        <div class="btnclass" style="display: inline;">
           <a href="{% url 'allergy-detection' %}">
             <input class="btn btn-primary btn-lg" type="submit" style="border:none; background:#05668D; float:right;margin-left: 10px;"
               value="Food Sense" />
@@ -259,15 +211,14 @@ $(function(){
               value="Add Kids" />
           </a>
         </div>
-       
-    
-
+        <!-- section for add kids and food sense END -->
       </div>
-    </section><!-- End Portfolio Section -->
-  </main><!-- End #main -->
+    </section>
+  <!-- End User Account Section -->
+  </main>
+  <!-- End #main -->
 
   <div id="footer"></div>
-
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
   <div id="preloader"></div>
 
@@ -283,10 +234,7 @@ $(function(){
   <script src="{% static "vendor/owl.carousel/owl.carousel.min.js"%}"></script>
   <script src="{% static "vendor/aos/aos.js"%}"></script>
 
-
   <!-- Template Main JS File -->
   <script src="{% static "js/main home.js"%}"></script>
-
 </body>
-
 </html>

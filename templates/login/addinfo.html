@@ -6,7 +6,6 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>Add allergic information</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
@@ -26,7 +25,8 @@
   <!-- Template Main CSS File -->
   <link href="/static/css/style home.css" rel="stylesheet">
   <link href="/static/css/Team-Boxed.css" rel="stylesheet">
-
+  
+  <!-- load footer and header file -->
   <script
       src="https://code.jquery.com/jquery-3.3.1.js"
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -44,85 +44,62 @@
 <body>
 
 <div id="header_file"></div>
-
+ <!-- Main section -->
 <main id="main">
 <section id="faq" class="faq section-bg" style="background:#028090;">
     <div class="container" data-aos="fade-up">
         <div class="team-boxed">
         <div class="container" style="background:#028090">
-            <section id="contact" class="contact" style="background:#028090">
-                <div class="container" data-aos="fade-up">
-                <div class="section-title">
+            <!-- user welcome section -->
+            <div class="section-title">
                 <h2>Welcome {{ request.session.user_name }}!</h2>
                 <p style="color:#fff">Add and Edit your Kids / Allergies</p>
-              </div>
-            </div>
-   
-
-    <div class="container">
-        <div class="col-md-10 offset-md-1 mt-5">
-        <div class="jumbotron">
-            <form action="" method="POST">
-                {% csrf_token %}
-                 
-                <div class="form-group">
-               
-                <strong>{{ form.kid_name|as_crispy_field }}</strong>
-                </div>
-                <div class="form-group">
-                </br>
-                <strong>{{ form.kid_allergy|as_crispy_field }}</strong>
-                </div>
-                <div class="form-group">
-                </br>
-                <!-- <p>if you have multiple allergens, please seperate by comma</p> -->
-                <strong>{{ form.personalised_allergy.label_tag }}</strong>
-                <p>if you have multiple allergens, please seperate them by a comma.</p>
-                {{ form.personalised_allergy }}
-                </div>
-                
-                
-
-            
-
-        <div class="row">
+            </div> 
+            <!-- user welcome section end -->
         
-        <div class="col-md-8">
-        </br>
-            <button type="submit" class="btn btn-success btn-block btn-lg" style="background-color: #05668D;"><i class="fas fa-database"></i>
-                Submit</button>
-        </div>
+   
+            <!-- allergy form section -->
+            <div class="container">
+                <div class="col-md-10 offset-md-1 mt-5">
+                    <div class="jumbotron">
+                        <form action="" method="POST">
+                            {% csrf_token %}               
+                            <div class="form-group">              
+                                <strong>{{ form.kid_name|as_crispy_field }}</strong>
+                            </div>
+                            <div class="form-group">
+                                </br>
+                                <strong>{{ form.kid_allergy|as_crispy_field }}</strong>
+                            </div>
+                            <div class="form-group">
+                                </br>              
+                                <strong>{{ form.personalised_allergy.label_tag }}</strong>
+                                <p>if you have multiple allergens, please seperate them by a comma.</p>
+                                {{ form.personalised_allergy }}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    </br>
+                                    <button type="submit" class="btn btn-success btn-block btn-lg" style="background-color: #05668D;"><i class="fas fa-database"></i>
+                                    Submit</button>
+                                </div>
 
-        <div class="col-md-4">
-        </br>
-            <a href="{% url 'list' %}" class="btn btn-secondary btn-block btn-lg">
-                <i class="fas fa-stream"></i> Back to list
-            </a>
-        </div>
-    </div>
-</form>
-
+                                <div class="col-md-4">
+                                    </br>
+                                    <a href="{% url 'list' %}" class="btn btn-secondary btn-block btn-lg">
+                                    <i class="fas fa-stream"></i> Back to list
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- allergy form section end -->
             </div>
         </div>
-    </div>
-
-     </div>
         </div>
     </div>
-
-          </section>
-
-
-
-
-
-
-
-
-
-
-
-
+</section>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -146,7 +123,5 @@
 
   <!-- Template Main JS File -->
   <script src="/static/js/main home.js"></script>
-
 </body>
-
 </html>

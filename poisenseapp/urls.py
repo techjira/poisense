@@ -3,6 +3,7 @@ from . import views
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
+# from django.conf.urls import handler404, handler500
 
 urlpatterns = [
 # path('', views.index, name='index'),
@@ -27,6 +28,9 @@ path('delete/<int:id>/', delete, name='delete'),
 # path('.well-known/acme-challenge/YWObyQs8K90gboL2UYaiKB6_k2emxhUuG-mZQ7yOg4c',ssl , name='.well-known/acme-challenge/YWObyQs8K90gboL2UYaiKB6_k2emxhUuG-mZQ7yOg4c'),
 # path('.well-known/acme-challenge/51_a9PO7gke53ZMZV0kbWLwiLIAn9xM2gsPFEaQS2j0',ssl2 , name='.well-known/acme-challenge/51_a9PO7gke53ZMZV0kbWLwiLIAn9xM2gsPFEaQS2j0'),
 ]
+
+# handler404 = 'poisenseapp.views.view_404'
+# handler500 = 'poisenseapp.views.view_404'
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

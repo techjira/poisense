@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<!-- Image not detected Page -->
+<!-- Image Note Detected Page -->
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -21,6 +21,7 @@
   <!-- Template Main CSS File -->
   <link href="{% static "assets/css/style home.css"%}" rel="stylesheet">
   <link href="/static/assets/img/icon.png" rel="icon">
+  <!-- Script to read header and footer files-->
   <script
       src="https://code.jquery.com/jquery-3.3.1.js"
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -34,30 +35,29 @@
   </script>
 </head>
 <body>
+  <!--  Header file -->
   <div id="header_file"></div>
   <!-- ======= Main Section ======= -->
   <section id="hero" class="d-flex align-items-center"  style="background:#05668D">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-          <h1>Check the Image</h1>
-          <h2>Ingredients were not found in the picture uploaded. Click a clear picture of ingredients and reupload it</h2>
+          <h1>Error 404</h1>
+          <h2>Page not found or either re-try</h2>
           <div class="d-lg-flex">
-            <a href="{% url 'allergy-info' %}" class="btn-get-started scrollto" style="background-color:#00a896">Click here to scan again</a>
+            <a href="{% url 'home' %}" class="btn-get-started scrollto" style="background-color:#00a896">Click here to go to hom</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="/static/assets/img/cam.gif" class="img-fluid animated" alt="">
+          <img src="/static/img/error1.gif" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
   </section>
   <!-- End Main -->
-  <main id="main">
-  </main>
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
   <div id="preloader"></div>
-  <!-- Footer Section -->
+  <!-- Footer section -->
   <div id="footer"></div>
   <!-- Vendor JS Files -->
   <script src="{% static "assets/vendor/jquery/jquery.min.js"%}"></script>

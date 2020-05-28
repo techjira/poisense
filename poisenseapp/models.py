@@ -72,6 +72,7 @@ class UserAllergyinfo(models.Model):
         managed = True
         db_table = 'User_allergyInfo'
         unique_together = (('kid_id', 'userid'),)
+        get_latest_by = 'kid_id'
 
 
 class Altername(models.Model):

@@ -30,6 +30,8 @@ import hashlib
 import re
 from poisenseapp.models import User, UserAllergyinfo
 
+
+
 # used to first call the password page
 def password(request):
     return render(request,'password.html')
@@ -141,13 +143,13 @@ def sense(request):
 def addInfo(request,id=0):
     list1 = []
     list2 = []
+    #check user login status
     if not request.session.get('is_login', None):
         return redirect('/login/')
     if request.method == 'POST':
         #id = 0 means creating the kids
         if id == 0:
             info_form = forms.AllergyInfoForm(request.POST)
-
         #update the kid's information
         else:
             #find and connect the kid instance using pk
@@ -160,11 +162,11 @@ def addInfo(request,id=0):
                     for ele in kid_allergy:
                         list1.append(ele.allergycategory)
                         allergylist = ','.join(list1)
-
                     kid.kid_allergy = allergylist
                 else:
+                    # deal with the null value
                     kid.kid_allergy = "no allergy selected"
-
+                #save the allergy info
                 info_form.save()
                 return redirect('/index/')
 
@@ -172,10 +174,12 @@ def addInfo(request,id=0):
             userid = request.session.get('user_id')
             # count the number of kids
             kid_no = models.UserAllergyinfo.objects.filter(userid=request.session.get('user_id')).count()
-            if kid_no == None:
+            if kid_no == 0:
                 kid_no = 1
             else:
-                kid_no = kid_no + 1
+                kid = models.UserAllergyinfo.objects.filter(userid=request.session.get('user_id')).latest()
+                kid_no = kid.kid_id + 1
+
             kid_id = kid_no
             kid_name = info_form.cleaned_data.get('kid_name')
             kid_allergy = info_form.cleaned_data.get('kid_allergy')
@@ -190,14 +194,13 @@ def addInfo(request,id=0):
                 for ele in kid_allergy:
                     list1.append(ele.allergycategory)
                     allergylist = ','.join(list1)
-
                 new_kid.kid_allergy = allergylist
             else:
+                # deal with null value
                 new_kid.kid_allergy = "no allergy selected"
-
             new_kid.personalised_allergy = personalised_allergy
             new_kid.save()
-
+    # if the request method equals to get
     else:
         if id == 0:
             info_form = forms.AllergyInfoForm()
@@ -205,11 +208,7 @@ def addInfo(request,id=0):
             kid = models.UserAllergyinfo.objects.get(pk=id)
             info_form = forms.AllergyInfoForm(instance=kid)
         return render(request, 'login/addinfo.html', {'form':info_form})
-
     return redirect('/index/')
-
-
-
 
 # index page show all the kids' allergy information
 def index(request):
@@ -218,6 +217,7 @@ def index(request):
 
 # User login
 def login(request):
+    #count the kid number navigating to different page
     obj_num = models.UserAllergyinfo.objects.filter(userid=request.session.get('user_id')).count()
     # cannot login repeatly
     if request.session.get('is_login', None):
@@ -255,9 +255,11 @@ def login(request):
                 return render(request, 'login/login.html', locals())
         else:
             return render(request, 'login/login.html', locals())
+    # if the request method equals to get
     login_form = forms.UserForm()
     return render(request, 'login/login.html', locals())
 
+# user registration
 def register(request):
     # if user logged in, redirect to the index page
     if request.session.get('is_login', None):
@@ -266,7 +268,7 @@ def register(request):
     if request.method == 'POST':
         register_form = forms.RegisterForm(request.POST)
         message = "Please ensure the content is valid！"
-
+        #get the field form the request
         if register_form.is_valid():
             username = register_form.cleaned_data.get('username')
             password1 = register_form.cleaned_data.get('password1')
@@ -276,6 +278,7 @@ def register(request):
                 message = 'The passwords do not match！'
                 return render(request, 'login/register.html', locals())
             else:
+                #password should mix number and letter
                 same_name_user = models.User.objects.filter(username=username)
                 pattern = re.compile('[0-9]+')
                 match = pattern.findall(password1)
@@ -285,7 +288,6 @@ def register(request):
                 if same_name_user:
                     message = 'the username is already existed'
                     return render(request, 'login/register.html', locals())
-
                 if  len(password1) < 8 or not match or not match1:
                     message = 'Make sure the password is at least 8 characters and contains at least one number.'
                     return render(request, 'login/register.html', locals())
@@ -294,11 +296,20 @@ def register(request):
                 new_user.username = username
                 new_user.password_hash = hash_code(password1)
                 new_user.save()
-                return redirect('/login/')
+                request.session['is_login'] = True
+                request.session['user_id'] = new_user.id
+                request.session['user_name'] = new_user.username
+
+                kid_num = models.UserAllergyinfo.objects.filter(userid=new_user.id).count()
+                # check whether the account has kids or not
+                if kid_num == 0:
+                    return redirect('/firstLogin/')
+                else:
+                    return redirect('/index/')
 
         else:
             return render(request, 'login/register.html', locals())
-
+    #if the request method equals to get
     register_form = forms.RegisterForm()
     return render(request, 'login/register.html', locals())
 
@@ -312,7 +323,7 @@ def logout(request):
     return redirect("/login/")
 
 # delete the kid
-def delete(reuqest,id):
+def delete(request,id):
     kid = models.UserAllergyinfo.objects.get(pk=id)
     kid.delete()
     return redirect('/index')

@@ -14,7 +14,7 @@ class ChemForm(forms.Form):
 
 # image upload form
 class UploadFileForm(forms.Form):
-    file = forms.FileField(widget=forms.FileInput(attrs={'label':'','capture': 'camera','accept':'image/x-png,image/gif,image/jpeg','style':'display:none;','id':'file','onchange':'loadFile(event)'}))
+    file = forms.FileField(widget=forms.FileInput(attrs={'label':'','capture': 'camera','accept':'image/x-png,image/gif,image/jpeg','style':'display:none;','id':'file','onchange':'loadFile(event)','onclick':'myFunction()'}))
 
     def __init__(self, *args, **kwargs):
         super(UploadFileForm, self).__init__(*args, **kwargs)
@@ -22,13 +22,13 @@ class UploadFileForm(forms.Form):
 
 #for food allergy
 class UploadAllergyFileForm(forms.Form):
-    Allergy_file = forms.FileField(widget=forms.FileInput(attrs={'label':'','capture': 'camera','accept':'image/x-png,image/gif,image/jpeg','style':'display:none;','id':'file','onchange':'loadFile(event)'}))
+    Allergy_file = forms.FileField(widget=forms.FileInput(attrs={'label':'','capture': 'camera','accept':'image/x-png,image/gif,image/jpeg','style':'display:none;','id':'file','onchange':'loadFile(event)','onclick':'myFunction()'}))
 
     def __init__(self, *args, **kwargs):
         super(UploadAllergyFileForm, self).__init__(*args, **kwargs)
         self.fields['Allergy_file'].label = ""
 
-
+#for user login
 class UserForm(forms.Form):
     username = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Username",'autofocus': ''}))
     password = forms.CharField(max_length=256, widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': "Password"}))
@@ -38,6 +38,7 @@ class UserForm(forms.Form):
         self.fields['username'].label = ""
         self.fields['password'].label = ""
 
+#for user registration
 class RegisterForm(forms.Form):
     username = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Username",'autofocus': ''}))
     # 0521suqin
@@ -50,6 +51,7 @@ class RegisterForm(forms.Form):
         self.fields['password1'].label = ""
         self.fields['password2'].label = ""
 
+# for user adding the allergy information
 class AllergyInfoForm(forms.ModelForm):
 
     kid_allergy = forms.ModelMultipleChoiceField(queryset=Foodcontain.objects.distinct('allergycategory'),

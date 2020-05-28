@@ -52,6 +52,64 @@
       $("#footer").load("{% url 'footer' %}");
     });
     </script>
+
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: #02C39A;
+}
+
+#myBar {
+  width: 10%;
+  height: 30px;
+  background-color: #028090;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style>
 </head>
 
 <body>
@@ -88,7 +146,8 @@
                 </div></center>
                 <img id="output"/ width="100%" height="100%">
                 <div style="padding-top:10px">
-                <center><button class="btn-get-started" id="snap" type="submit" style="" value="Submit">Submit</button></center>
+
+                <center><button class="btn-get-started" onclick="" id="snap" type="submit"  style="" value="Submit">Submit</button></center>
               </div>
               </form>
             </div>
@@ -110,7 +169,7 @@
                   {% endfor %}
                 </datalist>
               <br>
-              <center><button class="btn-get-started" id="ingredient_search" type="submit" style="" onclick="document.getElementById('ingre_name').click();">Search</button></center>
+              <center><button class="btn-get-started" id="ingredient_search" type="submit" style="" onclick="document.getElementById('ingre_name').click(); myFunction2()">Search <span class="" id="spin2" role="status" aria-hidden="true"></span></button></center>
               </form>
             </div>
           </div>
@@ -119,6 +178,90 @@
       </div>
     </section>
   </main><!-- End #main -->
+
+
+  <!-- Loading Screen -->
+  <div id="myModal" class="modal" >
+
+    <!-- Modal content -->
+    <div class="modal-content" style="background-color: #02C39A;">
+      <div id="myProgress">
+        <div id="myBar"></div>
+      </div>
+      <hr>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="7000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="d-block w-100" width="100%" height="100%" src="/static/img/flower1.jpg" alt="Yellow oleander">
+              </div>
+              <div class="col-md-8">
+                <h3>Did you know?</h3>
+                <p>Did u know that Yellow oleanders were toxic! but also highly appealing, especially to kids, often called lucky nuts.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-3">
+                <img class="d-block w-100" width="100%" height="100%" src="/static/img/sos2.gif" alt="Yellow oleander">
+              </div>
+              <div class="col-md-8">
+                <h3>Call the Poisons Information Hotline</h3>
+                <p>Click the SOS button or <b>dial 13 11 26</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="d-block w-100" width="100%" height="100%" src="/static/img/med1.png" alt="Yellow oleander">
+              </div>
+              <div class="col-md-8">
+                <h3>What can be poisonous?</h3>
+                <p> - Medicines</p>
+                <p> - Eucalyptus and other essential oils</p>
+                <p> - Batteries</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="d-block w-100" width="100%" height="100%" src="/static/img/mushroom.png" alt="Yellow oleander">
+              </div>
+              <div class="col-md-8">
+                <h3>Mushrooms?</h3>
+                <p>Never eat wild mushrooms in Australia; they can cause serious illness and occasionally death.</p>
+                <a target="_blank" href="https://www.health.nsw.gov.au/environment/factsheets/Pages/wild-mushroom-poisoning.aspx">More info on wild Mushrroms</a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="d-block w-100" width="100%" height="100%" src="/static/img/lead1.jpg" alt="Yellow oleander">
+              </div>
+              <div class="col-md-8">
+                <h3>Did you know?</h3>
+                <p>Lead is poisonous if swallowed. If lead is allowed to enter a child's body it can cause serious long-term health problems.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </div>
 
     <!-- Footer Section -->
     <div id="footer"></div>
@@ -140,6 +283,59 @@
 
     <!-- Template Main JS File -->
     <script src="{% static "assets/js/main home.js"%}"></script>
+
+    <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("snap");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    var i = 0;
+    btn.onclick = function() {
+      modal.style.display = "block";
+      if (i == 0) {
+        i = 1;
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 220);
+        function frame() {
+          if (width >= 99) {
+            clearInterval(id);
+            i = 0;
+          } else {
+            width++;
+            elem.style.width = width + "%";
+            elem.innerHTML = width  + "%";
+          }
+        }
+      }
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+    <script>
+    var x = document.getElementById("snap");
+    x.style.display = "none";
+function myFunction() {
+  var x = document.getElementById("snap");
+  x.style.display = "block";
+}
+</script>
 
 </body>
 
