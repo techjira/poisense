@@ -33,7 +33,7 @@ SECRET_KEY = '&xj#s9q2#lw5ohn=8f0g$*&mq6f30&k!-$=!&-#sm%t-9(^=dl'
 DEBUG = True
 
 # secure ssl
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
 ALLOWED_HOSTS = [
     'poisense.tech',
@@ -143,23 +143,23 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'static')
+# PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
+# STATICFILES_DIRS = [
+#     STATIC_DIR,
+# ]
 
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #This code is used to run on local system, pls comment the staticfiles when commiting to heroku
-# STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, "static"),
-#    '/var/www/static/',
-# ]
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "static"),
+   '/var/www/static/',
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
