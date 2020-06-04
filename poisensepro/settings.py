@@ -30,7 +30,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = '&xj#s9q2#lw5ohn=8f0g$*&mq6f30&k!-$=!&-#sm%t-9(^=dl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # secure ssl
 # SECURE_SSL_REDIRECT = True
