@@ -10,7 +10,7 @@
     <!-- Navbar Menu Options -->
     <nav class="nav-menu d-none d-lg-block">
       <ul>
-        <li><a href="{% url 'homepage' %}">Home</a></li>
+        <li><a href="{% url 'homepage' %}" style="color:white;">Home</a></li>
         <li><a href="{% url 'sense' %}">Chemical Sense</a></li>
         <li><a href="{% url 'allergy-detection' %}">Food Sense</a></li>
         {% if request.session.user_name %}
