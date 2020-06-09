@@ -57,10 +57,18 @@ heroku git:clone -a poisenseheroku
 heroku dyno:restart poisenseheroku
 ```
 
-### to Shutdown Heroku
+### To Shutdown Heroku
 ```
 heroku dyno:stop poisenseheroku
 ```
+
+### Fixing/updating final database output
+For chemical sense poisenseapp -> go to database_extract.py to alter the database extraction format or any new info to be displayed.
+Similarily for food sense go yo allergy_database_extract.py to alter the database extraction format or any new info to be displayed.
+
+### Image detection API
+For any issues in the image detection API, We can access the image_detection.py and allergy_image_detection.py files to fix the errors or update the API keys in them
+
 ## Running the tests
 
 Image could be uploaded for testing the ingredients through text detection API or ingredients could be manually fed in text input
